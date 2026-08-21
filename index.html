@@ -1,525 +1,84 @@
-
-
-    
-          <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DARK | Your Digital Entertainment & Gaming Hub</title>
-  <style>
-    :root {
-      --bg-color: #03070d;
-      --card-bg: rgba(9, 17, 30, 0.8);
-      --accent-blue: #00e5ff;
-      --accent-green: #00ff88;
-      --text-main: #ffffff;
-      --text-muted: #8b9bb4;
-      --border-blue: rgba(0, 229, 255, 0.4);
-      --border-green: rgba(0, 255, 136, 0.4);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.5;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Animated Canvas Background */
-    #bg-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 5%;
-      background: rgba(3, 7, 13, 0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
-
-    .brand-logo {
-      width: 32px;
-      height: 32px;
-      border: 2px solid var(--accent-blue);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-blue);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--accent-blue);
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 15px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-      position: relative;
-    }
-
-    .hero h1 {
-      font-size: 42px;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
-    }
-
-    .hero p {
-      color: var(--text-muted);
-      margin-bottom: 25px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .btn {
-      padding: 10px 24px;
-      border-radius: 20px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      background: rgba(3, 7, 13, 0.6);
-      backdrop-filter: blur(5px);
-    }
-
-    .btn-blue {
-      border: 1px solid var(--accent-blue);
-      color: var(--accent-blue);
-      box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
-    }
-
-    .btn-blue:hover {
-      background: var(--accent-blue);
-      color: #000;
-      box-shadow: 0 0 20px var(--accent-blue);
-    }
-
-    .btn-green {
-      border: 1px solid var(--accent-green);
-      color: var(--accent-green);
-      box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
-    }
-
-    .btn-green:hover {
-      background: var(--accent-green);
-      color: #000;
-      box-shadow: 0 0 20px var(--accent-green);
-    }
-
-    /* Section Headers */
-    .section-title {
-      text-align: center;
-      font-size: 24px;
-      margin: 40px 0 20px;
-    }
-
-    /* Categories Grid */
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 0 5% 40px;
-    }
-
-    .category-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-blue);
-      border-radius: 12px;
-      padding: 25px 20px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .category-card.green-accent {
-      border-color: var(--border-green);
-      box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
-    }
-
-    .category-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .category-card h3 {
-      margin-bottom: 10px;
-    }
-
-    .category-card p {
-      color: var(--text-muted);
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-
-    /* Media/Product Image Grid */
-    .items-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 0 5% 40px;
-    }
-
-    .item-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 12px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: border 0.3s ease;
-    }
-
-    .item-card:hover {
-      border-color: var(--accent-blue);
-    }
-
-    .item-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .item-card h4 {
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
-    .item-card select {
-      width: 100%;
-      padding: 8px;
-      background: #040914;
-      color: var(--text-main);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 6px;
-      margin: 8px 0;
-    }
-
-    /* Floating Widgets */
-    .widget-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
-    }
-
-    .chat-widget {
-      background: rgba(9, 17, 30, 0.9);
-      border: 1px solid var(--accent-blue);
-      padding: 10px 18px;
-      border-radius: 20px;
-      font-size: 13px;
-      box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
-      cursor: pointer;
-    }
-
-    .whatsapp-widget {
-      background: #00e676;
-      color: #000;
-      padding: 10px 18px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 30px 5%;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 12px;
-      background: rgba(3, 7, 13, 0.85);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 10px 0;
-      flex-wrap: wrap;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Background Motion Canvas -->
-  <canvas id="bg-canvas"></canvas>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="brand">
-      <div class="brand-logo"></div>
-      <span>DARK</span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">Movies & TV</a></li>
-      <li><a href="#">Gaming</a></li>
-      <li><a href="#">Gift Cards</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Deals</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <span>Search 🔍</span>
-      <span>Cart 🛒</span>
-      <span>Chat 💬</span>
-    </div>
-  </nav>
-
-  <!-- Hero Banner -->
-  <section class="hero">
-    <h1>WELCOME TO DARK</h1>
-    <p>Your Digital Entertainment & Gaming Hub</p>
-    <div class="hero-buttons">
-      <button class="btn btn-blue">Browse Products</button>
-      <button class="btn btn-blue">View Deals</button>
-    </div>
-  </section>
-
-  <!-- Main Categories Section -->
-  <h2 class="section-title">Main Categories</h2>
-  <div class="categories-grid">
-    <div class="category-card">
-      <h3>Movies & TV</h3>
-      <p>Streaming account rentals, weekly and monthly options</p>
-      <button class="btn btn-blue">Large Product</button>
-    </div>
-    <div class="category-card">
-      <h3>Gaming</h3>
-      <p>PUBG Mobile UC, Fortnite V-Bucks, Roblox, Xbox, Steam, etc.</p>
-      <button class="btn btn-blue">View Deals</button>
-    </div>
-    <div class="category-card">
-      <h3>Gift Cards</h3>
-      <p>Roblox, Xbox, Steam, Apple, etc.</p>
-      <button class="btn btn-blue">View Option</button>
-    </div>
-    <div class="category-card green-accent">
-      <h3>Digital Services</h3>
-      <p>MMG, bill payments, mobile/data, etc.</p>
-      <button class="btn btn-green">Money/Prosperity</button>
-    </div>
+<!-- Gaming Section with Packages and Prices -->
+<h2 class="section-title">Gaming Section</h2>
+<div class="grid-container">
+  <div class="card">
+    <img src="pubg.jpg" alt="PUBG Mobile" class="card-image">
+    <h3>PUBG Mobile</h3>
+    <p style="color:var(--accent-blue); font-weight:bold;">$0.99 – $99.99</p>
+    <select class="card-select">
+      <option value="">Select UC Pack</option>
+      <option value="60">60 UC – $0.99</option>
+      <option value="325">325+25 UC – $4.99</option>
+      <option value="660">660+60 UC – $9.99</option>
+      <option value="1800">1800+300 UC – $24.99</option>
+      <option value="6000">6000+2100 UC – $99.99</option>
+    </select>
+    <button class="btn btn-blue card-btn">Add to Cart</button>
   </div>
 
-  <!-- Featured Movies Section -->
-  <h2 class="section-title">🔥 Featured Movies</h2>
-  <div class="items-grid">
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=400&q=80" alt="Movie Trailer">
-      <h4>Movie Trailer</h4>
-      <button class="btn btn-blue">Watch Trailer</button>
-    </div>
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=80" alt="Pour Tor Metie">
-      <h4>Pour Tor Metie</h4>
-      <button class="btn btn-blue">Get Subscription</button>
-    </div>
+  <div class="card">
+    <img src="fortnite.jpg" alt="Fortnite" class="card-image">
+    <h3>Fortnite</h3>
+    <p style="color:var(--accent-blue); font-weight:bold;">$8.99 – $89.99</p>
+    <select class="card-select">
+      <option value="">Select V-Bucks</option>
+      <option value="800">800 V-Bucks – $8.99</option>
+      <option value="2400">2,400 V-Bucks – $22.99</option>
+      <option value="4500">4,500 V-Bucks – $36.99</option>
+      <option value="12500">12,500 V-Bucks – $89.99</option>
+    </select>
+    <button class="btn btn-blue card-btn">Add to Cart</button>
   </div>
 
-  <!-- Gaming Section with Images -->
-  <h2 class="section-title">🎮 Gaming Section</h2>
-  <div class="items-grid">
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" alt="PUBG Mobile">
-      <h4>PUBG Mobile</h4>
-      <button class="btn btn-blue">View Packages</button>
-    </div>
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1589241062272-c0a000072dfa?auto=format&fit=crop&w=400&q=80" alt="Fortnite">
-      <h4>Fortnite</h4>
-      <button class="btn btn-blue">View Packages</button>
-    </div>
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=400&q=80" alt="Roblox">
-      <h4>Roblox</h4>
-      <button class="btn btn-blue">View Packages</button>
-    </div>
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80" alt="Xbox">
-      <h4>Xbox</h4>
-      <button class="btn btn-blue">View Packages</button>
-    </div>
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Steam">
-      <h4>Steam</h4>
-      <button class="btn btn-blue">View Packages</button>
-    </div>
+  <div class="card">
+    <img src="roblox.jpg" alt="Roblox" class="card-image">
+    <h3>Roblox</h3>
+    <p style="color:var(--accent-blue); font-weight:bold;">$9.99 – $49.99</p>
+    <select class="card-select">
+      <option value="">Select Robux</option>
+      <option value="800">800 Robux – $9.99</option>
+      <option value="2000">2,000 Robux – $24.99</option>
+      <option value="4500">4,500 Robux – $49.99</option>
+    </select>
+    <button class="btn btn-blue card-btn">Add to Cart</button>
   </div>
 
-  <!-- Gift Cards Section with Images & Dropdowns -->
-  <h2 class="section-title">💳 Gift Cards</h2>
-  <div class="items-grid">
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=400&q=80" alt="Roblox Card">
-      <h4>Roblox Card</h4>
-      <p style="color:var(--accent-blue); font-weight:bold;">$100</p>
-      <select><option>Select Package</option></select>
-      <button class="btn btn-blue">Add to Cart</button>
-    </div>
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80" alt="Xbox Card">
-      <h4>Xbox Card</h4>
-      <p style="color:var(--accent-blue); font-weight:bold;">$60</p>
-      <select><option>Select Package</option></select>
-      <button class="btn btn-blue">Add to Cart</button>
-    </div>
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Steam Card">
-      <h4>Steam Card</h4>
-      <p style="color:var(--accent-green); font-weight:bold;">$200</p>
-      <select><option>Select Package</option></select>
-      <button class="btn btn-green">Add to Cart</button>
-    </div>
-    <div class="item-card">
-      <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=400&q=80" alt="Apple Card">
-      <h4>Apple Card</h4>
-      <p style="color:var(--accent-green); font-weight:bold;">$60</p>
-      <select><option>Select Package</option></select>
-      <button class="btn btn-green">Add to Cart</button>
-    </div>
+  <div class="card">
+    <img src="xbox.jpg" alt="Xbox" class="card-image">
+    <h3>Xbox</h3>
+    <p style="color:var(--accent-blue); font-weight:bold;">$15.00 – $100.00</p>
+    <select class="card-select">
+      <option value="">Select Pass / Top-Up</option>
+      <option value="15">$15 Gift Card</option>
+      <option value="25">$25 Gift Card</option>
+      <option value="gp">1 Month Game Pass – $16.99</option>
+    </select>
+    <button class="btn btn-blue card-btn">Add to Cart</button>
   </div>
 
-  <!-- Floating Chat Support -->
-  <div class="widget-container">
-    <div class="chat-widget">Chat with Us 💬</div>
-    <div class="whatsapp-widget">WhatsApp Support 📱</div>
+  <div class="card">
+    <img src="steam.jpg" alt="Steam" class="card-image">
+    <h3>Steam</h3>
+    <p style="color:var(--accent-blue); font-weight:bold;">$10.00 – $100.00</p>
+    <select class="card-select">
+      <option value="">Select Wallet Code</option>
+      <option value="10">$10 Wallet Code</option>
+      <option value="20">$20 Wallet Code</option>
+      <option value="50">$50 Wallet Code</option>
+      <option value="100">$100 Wallet Code</option>
+    </select>
+    <button class="btn btn-blue card-btn">Add to Cart</button>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p><strong>DARK</strong> — Digital Entertainment • Gaming • Gift Cards • Digital Services</p>
-    <div class="footer-links">
-      <a href="#">About</a>
-      <a href="#">FAQ</a>
-      <a href="#">Contact</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms & Conditions</a>
-    </div>
-  </footer>
+  <div class="card">
+    <img src="others.jpg" alt="Others" class="card-image">
+    <h3>Others</h3>
+    <p style="color:var(--accent-blue); font-weight:bold;">Custom Amount</p>
+    <select class="card-select">
+      <option value="">Select Service</option>
+      <option value="custom">Custom Top-Up</option>
+    </select>
+    <button class="btn btn-blue card-btn">View Options</button>
+  </div>
+</div>
 
-  <!-- Canvas Motion Background Animation -->
-  <script>
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let particles = [];
-
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.radius = Math.random() * 2.5 + 1;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.alpha = Math.random() * 0.5 + 0.2;
-        this.color = Math.random() > 0.5 ? '#00e5ff' : '#00ff88';
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.globalAlpha = this.alpha;
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = this.color;
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < 60; i++) particles.push(new Particle());
-
-    let angle = 0;
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      angle += 0.005;
-      const x1 = width * 0.3 + Math.sin(angle) * 150;
-      const y1 = height * 0.4 + Math.cos(angle * 0.8) * 100;
-      const grad1 = ctx.createRadialGradient(x1, y1, 50, x1, y1, 400);
-      grad1.addColorStop(0, 'rgba(0, 229, 255, 0.12)');
-      grad1.addColorStop(1, 'rgba(3, 7, 13, 0)');
-      ctx.fillStyle = grad1;
-      ctx.fillRect(0, 0, width, height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
-</body>
-</html>

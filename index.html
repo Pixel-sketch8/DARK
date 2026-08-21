@@ -1,1786 +1,468 @@
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 850px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 8px 14px;
-  border-radius: 30px;
-
-  background: rgba(0,191,255,.08);
-  border: 1px solid rgba(0,191,255,.3);
-
-  color: var(--cyan);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
-
-  margin-bottom: 25px;
-}
-
-.hero h1 {
-  font-size: clamp(42px, 8vw, 88px);
-  line-height: .95;
-  font-weight: 1000;
-  letter-spacing: 6px;
-
-  color: white;
-
-  text-shadow:
-    0 0 15px rgba(0,191,255,.35),
-    0 0 50px rgba(0,191,255,.12);
-
-  margin-bottom: 25px;
-}
-
-.hero h1 span {
-  color: var(--cyan);
-}
-
-.hero p {
-  max-width: 650px;
-  margin: auto;
-
-  color: #94a3b8;
-  font-size: 17px;
-  line-height: 1.7;
-}
-
-.hero-buttons {
-  margin-top: 35px;
-
-  display: flex;
-  justify-content: center;
-  gap: 13px;
-  flex-wrap: wrap;
-}
-
-.primary-btn,
-.secondary-btn {
-  padding: 14px 25px;
-  border-radius: 9px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 800;
-  transition: .25s;
-}
-
-.primary-btn {
-  color: #001018;
-  background: var(--cyan);
-  box-shadow: 0 0 25px rgba(0,191,255,.25);
-}
-
-.primary-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 35px rgba(0,191,255,.45);
-}
-
-.secondary-btn {
-  color: white;
-  border: 1px solid #1b4256;
-  background: rgba(7,15,22,.8);
-}
-
-.secondary-btn:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.container {
-  width: min(1200px, calc(100% - 32px));
-  margin: auto;
-}
-
-.section {
-  padding: 75px 0 20px;
-}
-
-.section-heading {
-  margin-bottom: 30px;
-}
-
-.section-heading.center {
-  text-align: center;
-}
-
-.section-heading small {
-  color: var(--cyan);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.section-heading h2 {
-  margin-top: 8px;
-  font-size: clamp(27px, 4vw, 40px);
-}
-
-.section-heading p {
-  color: var(--muted);
-  margin-top: 9px;
-  line-height: 1.6;
-}
-
-/* =========================================================
-   CATEGORY CARDS
-========================================================= */
-
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-}
-
-.category-card {
-  position: relative;
-  overflow: hidden;
-
-  min-height: 175px;
-  padding: 25px 17px;
-
-  text-align: center;
-
-  border-radius: 15px;
-  border: 1px solid #122433;
-
-  background:
-    radial-gradient(circle at top, rgba(0,191,255,.10), transparent 60%),
-    #080d13;
-
-  transition: .3s;
-}
-
-.category-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--blue);
-  box-shadow: 0 0 25px rgba(0,191,255,.12);
-}
-
-.category-icon {
-  font-size: 38px;
-  margin-bottom: 15px;
-}
-
-.category-card h3 {
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.category-card p {
-  color: #6f7d8c;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-/* =========================================================
-   GAME SECTION
-========================================================= */
-
-.game-section {
-  padding-top: 75px;
-}
-
-.game-title-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.game-name {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.game-name-icon {
-  width: 48px;
-  height: 48px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 12px;
-
-  background: #09131d;
-  border: 1px solid rgba(0,191,255,.25);
-
-  font-size: 25px;
-}
-
-.game-name h2 {
-  font-size: 25px;
-}
-
-.game-name p {
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.scroll-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.scroll-btn {
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-  border: 1px solid #1d3444;
-
-  background: #091018;
-  color: white;
-}
-
-.scroll-btn:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
-
-/* =========================================================
-   PRODUCT ROW
-========================================================= */
-
-.product-row {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 215px;
-
-  gap: 15px;
-
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-
-  padding: 5px 2px 15px;
-
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: #006c9a #091018;
-}
-
-.product-row::-webkit-scrollbar {
-  height: 6px;
-}
-
-.product-row::-webkit-scrollbar-track {
-  background: #091018;
-}
-
-.product-row::-webkit-scrollbar-thumb {
-  background: #006c9a;
-  border-radius: 10px;
-}
-
-/* =========================================================
-   PRODUCT CARD
-========================================================= */
-
-.product-card {
-  scroll-snap-align: start;
-
-  overflow: hidden;
-
-  background: #080d13;
-  border: 1px solid #132532;
-
-  border-radius: 14px;
-
-  transition: .3s;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--blue);
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-
-/* GAME ART */
-
-.game-art {
-  height: 145px;
-  position: relative;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-}
-
-.game-art::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(3,6,9,.95),
-      transparent 60%
-    );
-}
-
-.game-art-content {
-  position: relative;
-  z-index: 2;
-}
-
-.game-art .big-icon {
-  display: block;
-  font-size: 48px;
-
-  filter:
-    drop-shadow(0 0 10px rgba(255,255,255,.4));
-}
-
-.game-art strong {
-  display: block;
-  margin-top: 7px;
-
-  font-size: 16px;
-  letter-spacing: 2px;
-}
-
-/* DIFFERENT GAME VISUALS */
-
-.pubg-art {
-  background:
-    radial-gradient(circle at 50% 20%, rgba(255,180,0,.35), transparent 35%),
-    linear-gradient(135deg, #151006, #18202a 55%, #06090c);
-}
-
-.cod-art {
-  background:
-    radial-gradient(circle at 70% 20%, rgba(255,70,30,.25), transparent 35%),
-    linear-gradient(135deg, #151515, #222 50%, #060606);
-}
-
-.ff-art {
-  background:
-    radial-gradient(circle at 50% 25%, rgba(255,80,0,.45), transparent 35%),
-    linear-gradient(135deg, #170600, #351106 50%, #07090c);
-}
-
-.roblox-art {
-  background:
-    radial-gradient(circle at 50% 20%, rgba(0,191,255,.3), transparent 35%),
-    linear-gradient(135deg, #06131b, #102b38 50%, #06090c);
-}
-
-.card-art {
-  background:
-    radial-gradient(circle at 50% 20%, rgba(0,255,180,.25), transparent 35%),
-    linear-gradient(135deg, #031510, #092820 50%, #06090c);
-}
-
-/* PRODUCT INFORMATION */
-
-.product-info {
-  padding: 15px;
-}
-
-.product-name {
-  color: white;
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.product-subtitle {
-  color: #667482;
-  font-size: 11px;
-  margin-top: 5px;
-  min-height: 30px;
-}
-
-.product-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-
-  margin-top: 14px;
-}
-
-.price {
-  color: var(--cyan);
-  font-size: 15px;
-  font-weight: 900;
-}
-
-.buy-btn {
-  padding: 9px 12px;
-
-  border-radius: 7px;
-  border: 1px solid #07577a;
-
-  background: #082031;
-  color: var(--cyan);
-
-  font-size: 11px;
-  font-weight: 900;
-
-  transition: .25s;
-}
-
-.buy-btn:hover {
-  color: #001018;
-  background: var(--cyan);
-  border-color: var(--cyan);
-}
-
-/* =========================================================
-   PAYMENT / CONTACT
-========================================================= */
-
-.payment-box {
-  margin-top: 80px;
-  padding: 35px;
-
-  border-radius: 18px;
-  border: 1px solid #143244;
-
-  background:
-    radial-gradient(circle at 20% 20%, rgba(0,191,255,.08), transparent 40%),
-    #080d13;
-}
-
-.payment-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.payment-item {
-  padding: 20px;
-  border-radius: 12px;
-  background: #05090e;
-  border: 1px solid #122331;
-  text-align: center;
-}
-
-.payment-item small {
-  display: block;
-  color: #657585;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-.payment-item strong {
-  color: var(--cyan);
-  font-size: 16px;
-}
-
-/* =========================================================
-   ORDER MODAL
-========================================================= */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 5000;
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  padding: 15px;
-
-  background: rgba(0,0,0,.78);
-  backdrop-filter: blur(8px);
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal-box {
-  width: min(500px, 100%);
-  max-height: 90vh;
-  overflow-y: auto;
-
-  background: #080d13;
-
-  border: 1px solid #1b5068;
-  border-radius: 18px;
-
-  box-shadow: 0 20px 80px rgba(0,0,0,.65);
-
-  padding: 25px;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 20px;
-}
-
-.modal-header h2 {
-  font-size: 21px;
-}
-
-.close-btn {
-  width: 35px;
-  height: 35px;
-
-  border-radius: 50%;
-  border: 1px solid #233b4a;
-
-  background: #0b131b;
-  color: white;
-}
-
-.close-btn:hover {
-  color: var(--cyan);
-  border-color: var(--cyan);
-}
-
-.selected-product {
-  padding: 15px;
-  border-radius: 10px;
-
-  background: #05090e;
-  border: 1px solid #142b38;
-
-  margin-bottom: 18px;
-}
-
-.selected-product strong {
-  color: var(--cyan);
-}
-
-.form-group {
-  margin-bottom: 14px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 7px;
-
-  color: #aab5c0;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-
-  padding: 13px;
-
-  border-radius: 8px;
-  border: 1px solid #1a3443;
-
-  background: #05090e;
-  color: white;
-
-  outline: none;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  border-color: var(--cyan);
-  box-shadow: 0 0 12px rgba(0,191,255,.12);
-}
-
-.whatsapp-order {
-  width: 100%;
-
-  padding: 14px;
-
-  border: none;
-  border-radius: 9px;
-
-  background: #25d366;
-  color: #001b0a;
-
-  font-size: 14px;
-  font-weight: 900;
-
-  margin-top: 7px;
-}
+DARK — Gaming Digital Store Website Specification
 
-.whatsapp-order:hover {
-  filter: brightness(1.08);
-}
+1. Main Goal
 
-/* =========================================================
-   SEARCH MODAL
-========================================================= */
-
-.search-input {
-  width: 100%;
-  padding: 15px;
-
-  border-radius: 10px;
-  border: 1px solid #1a3443;
-
-  background: #05090e;
-  color: white;
-
-  outline: none;
-
-  margin-bottom: 15px;
-}
-
-.search-results {
-  display: grid;
-  gap: 8px;
-}
-
-.search-result {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 12px;
-
-  background: #05090e;
-  border: 1px solid #142b38;
-  border-radius: 9px;
-}
-
-.search-result span {
-  font-size: 13px;
-}
-
-.search-result button {
-  padding: 7px 10px;
-
-  background: #082031;
-  color: var(--cyan);
-
-  border: 1px solid #07577a;
-  border-radius: 6px;
-
-  font-size: 11px;
-}
-
-/* =========================================================
-   FLOATING WHATSAPP
-========================================================= */
-
-.whatsapp-float {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 1000;
-
-  width: 56px;
-  height: 56px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: #25d366;
-  color: white;
-
-  text-decoration: none;
+Create a complete, professional gaming-focused website called DARK.
 
-  font-size: 26px;
-
-  box-shadow: 0 5px 25px rgba(37,211,102,.3);
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.05);
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-  margin-top: 80px;
-  padding: 40px 20px;
-
-  border-top: 1px solid #101b25;
+The attached sample image is the PRIMARY visual reference. Do not create a generic dark website. Recreate the sample's overall visual style, layout, proportions, spacing, atmosphere, neon effects, typography, and premium gaming-store appearance as closely as possible.
 
-  text-align: center;
-}
-
-.footer-logo {
-  font-size: 25px;
-  font-weight: 900;
-  letter-spacing: 4px;
-}
-
-.footer-logo span {
-  color: var(--cyan);
-}
-
-footer p {
-  margin-top: 10px;
-  color: #5d6975;
-  font-size: 12px;
-}
-
-.footer-links {
-  margin-top: 18px;
-
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: #7d8995;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-.footer-links a:hover {
-  color: var(--cyan);
-}
-
-/* =========================================================
-   RESPONSIVE TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-
-  .nav-links {
-    gap: 13px;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-  }
-
-  .category-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-}
-
-/* =========================================================
-   RESPONSIVE MOBILE
-========================================================= */
-
-@media (max-width: 760px) {
-
-  .navbar {
-    min-height: 64px;
-  }
-
-  .logo-text {
-    font-size: 21px;
-  }
-
-  .logo-symbol {
-    font-size: 27px;
-  }
-
-  .menu-btn {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
-
-    display: none;
-    flex-direction: column;
-
-    padding: 18px;
-
-    background: #05090e;
-    border-bottom: 1px solid #153242;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links a {
-    width: 100%;
-    padding: 11px;
-    text-align: center;
-  }
-
-  .nav-actions {
-    margin-left: auto;
-  }
-
-  .hero {
-    min-height: 520px;
-    padding: 70px 17px;
-  }
-
-  .hero h1 {
-    letter-spacing: 3px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-
-  .container {
-    width: min(100% - 24px, 1200px);
-  }
-
-  .section {
-    padding-top: 55px;
-  }
-
-  .category-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .category-card {
-    min-height: 155px;
-    padding: 20px 10px;
-  }
-
-  .category-icon {
-    font-size: 31px;
-  }
-
-  .game-title-row {
-    align-items: center;
-  }
-
-  .game-name h2 {
-    font-size: 19px;
-  }
-
-  .game-name p {
-    font-size: 10px;
-  }
-
-  .game-name-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 21px;
-  }
-
-  .product-row {
-    grid-auto-columns: 190px;
-  }
-
-  .game-art {
-    height: 125px;
-  }
-
-  .payment-box {
-    padding: 20px 13px;
-  }
-
-  .payment-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
+The website must work directly on GitHub Pages using a single "index.html" file.
 
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
+Do NOT include bill payment or bill-pay services.
 
-@media (max-width: 420px) {
-
-  .logo-text {
-    font-size: 18px;
-    letter-spacing: 3px;
-  }
-
-  .logo-symbol {
-    font-size: 24px;
-  }
+For now, remove the movie/TV service focus and make gaming top-ups the primary products.
 
-  .icon-btn {
-    width: 36px;
-    height: 36px;
-  }
+---
 
-  .hero {
-    min-height: 480px;
-  }
+2. Visual Design
 
-  .hero h1 {
-    font-size: 39px;
-  }
+Use:
 
-  .hero-buttons {
-    flex-direction: column;
-  }
+- Deep black background
+- Dark charcoal panels
+- Electric/neon blue glow
+- Subtle green accents
+- Atmospheric smoke/fog
+- Soft neon lighting
+- Futuristic gaming aesthetic
+- Glass/transparent panels where appropriate
+- Glowing borders
+- Smooth hover animations
+- Subtle background animation
+- Professional typography
+- Strong visual hierarchy
 
-  .primary-btn,
-  .secondary-btn {
-    width: 100%;
-  }
+The site should feel like a premium gaming marketplace, not a basic HTML template.
 
-  .category-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+Do not overuse bright colors. Keep the overall appearance dark and cinematic.
 
-  .category-card h3 {
-    font-size: 13px;
-  }
+---
 
-  .category-card p {
-    font-size: 10px;
-  }
+3. Website Layout
 
-  .product-row {
-    grid-auto-columns: 175px;
-  }
+Header
 
-  .product-bottom {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+Create a sticky/fixed responsive header.
 
-  .buy-btn {
-    width: 100%;
-  }
+Left:
 
-}
+DARK logo
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+Center/right navigation:
 
-@media (prefers-reduced-motion: reduce) {
+- Home
+- Gaming
+- Gift Cards
+- Services
+- Deals
+- Contact
 
-  html {
-    scroll-behavior: auto;
-  }
+Also include:
 
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-  }
+- Search icon/button
+- Shopping cart icon/button
+- Mobile menu button
 
-}
-</style>
-</head>
+On mobile, use a clean hamburger menu instead of allowing navigation text to wrap awkwardly.
 
-<body>
+---
 
-<!-- =======================================================
-     HEADER
-======================================================= -->
+4. Hero Section
 
-<header>
+The hero must closely follow the sample image's composition.
 
-  <div class="navbar">
+Include:
 
-    <a href="#" class="logo">
-      <span class="logo-symbol">∞</span>
-      <span class="logo-text">D<span>A</span>RK</span>
-    </a>
+Small label:
 
-    <nav class="nav-links" id="navLinks">
+DIGITAL GAMING STORE
 
-      <a href="#home">Home</a>
-      <a href="#pubg">PUBG</a>
-      <a href="#cod">COD</a>
-      <a href="#freefire">Free Fire</a>
-      <a href="#roblox">Roblox</a>
-      <a href="#giftcards">Gift Cards</a>
-      <a href="#contact">Contact</a>
+Large headline:
 
-    </nav>
+WELCOME TO DARK
 
-    <div class="nav-actions">
+Use neon blue emphasis on important words.
 
-      <button class="icon-btn" onclick="openSearch()" aria-label="Search">
-        🔍
-      </button>
+Supporting text explaining that DARK provides gaming top-ups and digital gaming products.
 
-      <button class="icon-btn cart-btn" onclick="openCart()" aria-label="Cart">
-        🛒
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
+Buttons:
 
-      <button class="icon-btn menu-btn" onclick="toggleMenu()" aria-label="Menu">
-        ☰
-      </button>
+SHOP GAMING
 
-    </div>
+VIEW DEALS
 
-  </div>
+The hero background should contain:
 
-</header>
+- Dark atmospheric background
+- Smoke/fog
+- Blue neon glow
+- Subtle green lighting
+- Gaming-inspired visual atmosphere
+- Animated but smooth effects
 
+Do not make the animation distracting.
 
-<!-- =======================================================
-     HERO
-======================================================= -->
+---
 
-<section class="hero" id="home">
+5. Gaming Categories
 
-  <div class="hero-content">
+Immediately below the hero, create a visually strong gaming category section.
 
-    <div class="badge">
-      ⚡ DIGITAL GAMING STORE • GUYANA
-    </div>
+Title:
 
-    <h1>
-      WELCOME TO <span>DARK</span>
-    </h1>
+LEVEL UP YOUR GAME
 
-    <p>
-      Your gaming destination for PUBG Mobile UC,
-      Call of Duty CP, Free Fire Diamonds,
-      Roblox Robux and digital gift cards.
-    </p>
+Subtitle explaining that customers can choose their favorite game and top-up package.
 
-    <div class="hero-buttons">
+Create four main game cards:
 
-      <a href="#pubg" class="primary-btn">
-        🎮 Browse Gaming
-      </a>
+PUBG MOBILE
 
-      <a href="#contact" class="secondary-btn">
-        💳 Payment Information
-      </a>
+Icon/image area
+PUBG Mobile title
+Short description
+Button: VIEW PACKAGES
 
-    </div>
+FREE FIRE
 
-  </div>
+Icon/image area
+Free Fire title
+Short description
+Button: VIEW PACKAGES
 
-</section>
+CALL OF DUTY
 
+Icon/image area
+Call of Duty title
+Short description
+Button: VIEW PACKAGES
 
-<!-- =======================================================
-     CATEGORIES
-======================================================= -->
+ROBLOX
 
-<section class="section">
+Icon/image area
+Roblox title
+Short description
+Button: VIEW PACKAGES
 
-  <div class="container">
+Cards should have:
 
-    <div class="section-heading center">
+- Neon borders
+- Hover glow
+- Slight lift animation
+- Dark glass background
+- Game artwork/icon area
+- Responsive design
 
-      <small>EXPLORE DARK</small>
+---
 
-      <h2>What We Offer</h2>
+6. PUBG MOBILE PRODUCTS
 
-      <p>
-        Fast digital gaming products and gift cards.
-      </p>
+Create a dedicated PUBG Mobile product section.
 
-    </div>
+Title:
 
-    <div class="category-grid">
+PUBG MOBILE UC
 
-      <div class="category-card"
-           onclick="scrollToSection('pubg')">
+Display the packages as attractive product cards.
 
-        <div class="category-icon">🎮</div>
+Packages:
 
-        <h3>PUBG Mobile</h3>
+- 60 UC — GYD $300
+- 325 UC — GYD $1,300
+- 660 UC — GYD $2,300
+- 1,800 UC — GYD $5,500
+- 3,850 UC — GYD $11,400
+- 8,100 UC — GYD $21,500
 
-        <p>UC top-ups for PUBG Mobile.</p>
+Each package needs:
 
-      </div>
+- UC amount
+- Price
+- Add to Cart button
+- Buy Now button or product selection
+- Attractive gaming styling
 
+---
 
-      <div class="category-card"
-           onclick="scrollToSection('cod')">
+7. FREE FIRE PRODUCTS
 
-        <div class="category-icon">🎯</div>
+Title:
 
-        <h3>Call of Duty</h3>
+FREE FIRE DIAMONDS
 
-        <p>COD Mobile CP packages.</p>
+Packages:
 
-      </div>
+- 100 — GYD $300
+- 210 — GYD $500
+- 530 — GYD $1,300
+- 1,080 — GYD $2,400
+- 2,200 — GYD $4,600
+- 5,600 — GYD $11,000
 
+Each package needs:
 
-      <div class="category-card"
-           onclick="scrollToSection('freefire')">
+- Diamond amount
+- Price
+- Add to Cart
+- Buy Now
 
-        <div class="category-icon">💎</div>
+---
 
-        <h3>Free Fire</h3>
+8. CALL OF DUTY PRODUCTS
 
-        <p>Diamonds for your Free Fire account.</p>
+Title:
 
-      </div>
+CALL OF DUTY CP
 
+Packages:
 
-      <div class="category-card"
-           onclick="scrollToSection('roblox')">
+- 80 CP — GYD $400
+- 420 CP — GYD $1,300
+- 880 CP — GYD $2,300
+- 2,400 CP — GYD $5,500
+- 5,000 CP — GYD $11,000
+- 10,800 CP — GYD $21,500
 
-        <div class="category-icon">🧱</div>
+Each package needs:
 
-        <h3>Roblox</h3>
+- CP amount
+- Price
+- Add to Cart
+- Buy Now
 
-        <p>Robux packages for Roblox players.</p>
+---
 
-      </div>
+9. ROBLOX PRODUCTS
 
+Title:
 
-      <div class="category-card"
-           onclick="scrollToSection('giftcards')">
+ROBLOX
 
-        <div class="category-icon">🎁</div>
+Packages:
 
-        <h3>Gift Cards</h3>
+- 40 — GYD $300
+- 80 — GYD $600
+- 500 — GYD $1,300
+- 1,000 — GYD $2,300
+- 2,000 — GYD $4,600
+- 4,500 — GYD $11,300
+- 10,000 — GYD $21,500
 
-        <p>Digital cards for popular platforms.</p>
+Each package needs:
 
-      </div>
+- Amount
+- Price
+- Add to Cart
+- Buy Now
 
-    </div>
+---
 
-  </div>
+10. Shopping Cart
 
-</section>
+Create a functional front-end shopping cart.
 
+When a customer clicks Add to Cart:
 
-<!-- =======================================================
-     PUBG MOBILE
-======================================================= -->
+- Product is added to cart
+- Cart counter increases
+- Cart can be opened
+- Product name is displayed
+- Quantity can be changed
+- Product can be removed
+- Total price updates automatically
 
-<section class="game-section" id="pubg">
+Use JavaScript and localStorage so the cart remains available after refreshing the page.
 
-  <div class="container">
+---
 
-    <div class="game-title-row">
+11. Search
 
-      <div class="game-name">
+Create a working product search.
 
-        <div class="game-name-icon">🎮</div>
+Customers should be able to search:
 
-        <div>
-          <h2>PUBG Mobile</h2>
-          <p>Unknown Cash • UC</p>
-        </div>
+- PUBG
+- Free Fire
+- Call of Duty
+- Roblox
+- UC
+- Diamonds
+- CP
 
-      </div>
+Search results should filter the gaming products displayed on the page.
 
-      <div class="scroll-buttons">
+---
 
-        <button class="scroll-btn"
-                onclick="scrollProducts('pubgProducts', -400)">
-          ❮
-        </button>
+12. Deals Section
 
-        <button class="scroll-btn"
-                onclick="scrollProducts('pubgProducts', 400)">
-          ❯
-        </button>
+Create a premium section called:
 
-      </div>
+DARK DEALS
 
-    </div>
+Use a glowing promotional design.
 
+Include space for:
 
-    <div class="product-row" id="pubgProducts">
+- Featured gaming deals
+- Discount announcements
+- Limited-time offers
 
-      <div class="product-card">
+Make the section easy to update later.
 
-        <div class="game-art pubg-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎮</span>
-            <strong>PUBG MOBILE</strong>
-          </div>
-        </div>
+---
 
-        <div class="product-info">
+13. Gift Cards
 
-          <div class="product-name">60 UC</div>
+Keep a smaller section for:
 
-          <div class="product-subtitle">
-            PUBG Mobile UC
-          </div>
+DIGITAL GIFT CARDS
 
-          <div class="product-bottom">
+This can be included as a secondary category.
 
-            <div class="price">
-              GYD $300
-            </div>
+Do not make it more prominent than gaming.
 
-            <button class="buy-btn"
-                    onclick="buyProduct('PUBG Mobile', '60 UC', 300)">
-              BUY
-            </button>
+---
 
-          </div>
+14. Contact Section
 
-        </div>
+Create a clean contact section.
 
-      </div>
+Title:
 
+NEED HELP?
 
-      <div class="product-card">
+Include:
 
-        <div class="game-art pubg-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎮</span>
-            <strong>PUBG MOBILE</strong>
-          </div>
-        </div>
+- Customer support text
+- Contact button
+- Social/contact placeholders that can be replaced later
 
-        <div class="product-info">
+Do not use fake contact information as if it were real.
 
-          <div class="product-name">325 UC</div>
+---
 
-          <div class="product-subtitle">
-            PUBG Mobile UC
-          </div>
+15. Footer
 
-          <div class="product-bottom">
+Footer should contain:
 
-            <div class="price">
-              GYD $1,300
-            </div>
+DARK
 
-            <button class="buy-btn"
-                    onclick="buyProduct('PUBG Mobile', '325 UC', 1300)">
-              BUY
-            </button>
+Navigation links:
 
-          </div>
+- Home
+- Gaming
+- Gift Cards
+- Deals
+- Contact
 
-        </div>
+Also include:
 
-      </div>
+© 2026 DARK. All rights reserved.
 
+---
 
-      <div class="product-card">
+16. Mobile Responsiveness
 
-        <div class="game-art pubg-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎮</span>
-            <strong>PUBG MOBILE</strong>
-          </div>
-        </div>
+This is extremely important.
 
-        <div class="product-info">
+The website must work properly on:
 
-          <div class="product-name">660 UC</div>
+- Android phones
+- iPhones
+- Small phones
+- Large phones
+- Tablets
+- Laptops
+- Desktop computers
 
-          <div class="product-subtitle">
-            PUBG Mobile UC
-          </div>
+On mobile:
 
-          <div class="product-bottom">
+- No horizontal scrolling
+- No navigation wrapping
+- Cards become one-column or two-column depending on screen width
+- Buttons remain easy to tap
+- Text scales correctly
+- Cart remains accessible
+- Mobile menu works
+- Hero section remains visually impressive
 
-            <div class="price">
-              GYD $2,300
-            </div>
+---
 
-            <button class="buy-btn"
-                    onclick="buyProduct('PUBG Mobile', '660 UC', 2300)">
-              BUY
-            </button>
+17. Animations
 
-          </div>
+Use professional animations such as:
 
-        </div>
+- Fade-in sections
+- Smooth scrolling
+- Neon hover effects
+- Card hover lift
+- Button glow
+- Background smoke movement
+- Subtle floating effects
 
-      </div>
+Animations must remain smooth and not slow down mobile devices.
 
+---
 
-      <div class="product-card">
+18. Technical Requirements
 
-        <div class="game-art pubg-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎮</span>
-            <strong>PUBG MOBILE</strong>
-          </div>
-        </div>
+Everything must be contained in:
 
-        <div class="product-info">
+index.html
 
-          <div class="product-name">1,800 UC</div>
+Use:
 
-          <div class="product-subtitle">
-            PUBG Mobile UC
-          </div>
+- HTML
+- CSS
+- JavaScript
 
-          <div class="product-bottom">
+Do not require a backend.
 
-            <div class="price">
-              GYD $5,500
-            </div>
+The website must work on GitHub Pages.
 
-            <button class="buy-btn"
-                    onclick="buyProduct('PUBG Mobile', '1,800 UC', 5500)">
-              BUY
-            </button>
+Use clean, organized code with comments separating:
 
-          </div>
+- Header
+- Hero
+- Gaming categories
+- PUBG
+- Free Fire
+- Call of Duty
+- Roblox
+- Deals
+- Gift Cards
+- Contact
+- Footer
+- Cart JavaScript
+- Search JavaScript
 
-        </div>
+---
 
-      </div>
+19. Most Important Instruction
 
+Use the attached sample image as the primary design reference.
 
-      <div class="product-card">
+Do NOT simply create another generic black-and-blue gaming website.
 
-        <div class="game-art pubg-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎮</span>
-            <strong>PUBG MOBILE</strong>
-          </div>
-        </div>
+The final result should visually resemble the sample in:
 
-        <div class="product-info">
+- Layout
+- Spacing
+- Hero composition
+- Typography
+- Colors
+- Neon glow
+- Smoke/fog atmosphere
+- Cards
+- Buttons
+- Navigation
+- Section arrangement
+- Overall premium appearance
 
-          <div class="product-name">3,850 UC</div>
+But adapt the content so that gaming top-ups are the main focus.
 
-          <div class="product-subtitle">
-            PUBG Mobile UC
-          </div>
+Remove movie/TV services for now.
 
-          <div class="product-bottom">
+Do not include bill payment anywhere.
 
-            <div class="price">
-              GYD $11,400
-            </div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('PUBG Mobile', '3,850 UC', 11400)">
-              BUY
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art pubg-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎮</span>
-            <strong>PUBG MOBILE</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">8,100 UC</div>
-
-          <div class="product-subtitle">
-            PUBG Mobile UC
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              GYD $21,500
-            </div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('PUBG Mobile', '8,100 UC', 21500)">
-              BUY
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     COD MOBILE
-======================================================= -->
-
-<section class="game-section" id="cod">
-
-  <div class="container">
-
-    <div class="game-title-row">
-
-      <div class="game-name">
-
-        <div class="game-name-icon">🎯</div>
-
-        <div>
-          <h2>Call of Duty Mobile</h2>
-          <p>COD Points • CP</p>
-        </div>
-
-      </div>
-
-      <div class="scroll-buttons">
-
-        <button class="scroll-btn"
-                onclick="scrollProducts('codProducts', -400)">
-          ❮
-        </button>
-
-        <button class="scroll-btn"
-                onclick="scrollProducts('codProducts', 400)">
-          ❯
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="product-row" id="codProducts">
-
-      <div class="product-card">
-
-        <div class="game-art cod-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎯</span>
-            <strong>CALL OF DUTY</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">80 CP</div>
-
-          <div class="product-subtitle">
-            COD Mobile Points
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">GYD $400</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Call of Duty Mobile', '80 CP', 400)">
-              BUY
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art cod-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎯</span>
-            <strong>CALL OF DUTY</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">420 CP</div>
-
-          <div class="product-subtitle">
-            COD Mobile Points
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">GYD $1,300</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Call of Duty Mobile', '420 CP', 1300)">
-              BUY
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art cod-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎯</span>
-            <strong>CALL OF DUTY</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">880 CP</div>
-
-          <div class="product-subtitle">
-            COD Mobile Points
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">GYD $2,300</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Call of Duty Mobile', '880 CP', 2300)">
-              BUY
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art cod-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎯</span>
-            <strong>CALL OF DUTY</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">2,400 CP</div>
-
-          <div class="product-subtitle">
-            COD Mobile Points
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">GYD $5,500</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Call of Duty Mobile', '2,400 CP', 5500)">
-              BUY
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art cod-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎯</span>
-            <strong>CALL OF DUTY</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">5,000 CP</div>
-
-          <div class="product-subtitle">
-            COD Mobile Points
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">GYD $11,000</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Call of Duty Mobile', '5,000 CP', 11000)">
-              BUY
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art cod-art">
-          <div class="game-art-content">
-            <span class="big-icon">🎯</span>
-            <strong>CALL OF DUTY</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">10,800 CP</div>
-
-          <div class="product-subtitle">
-            COD Mobile Points
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">GYD $21,500</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Call of Duty Mobile', '10,800 CP', 21500)">
-              BUY
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     FREE FIRE
-======================================================= -->
-
-<section class="game-section" id="freefire">
-
-  <div class="container">
-
-    <div class="game-title-row">
-
-      <div class="game-name">
-
-        <div class="game-name-icon">💎</div>
-
-        <div>
-          <h2>Free Fire</h2>
-          <p>Diamonds</p>
-        </div>
-
-      </div>
-
-      <div class="scroll-buttons">
-
-        <button class="scroll-btn"
-                onclick="scrollProducts('ffProducts', -400)">
-          ❮
-        </button>
-
-        <button class="scroll-btn"
-                onclick="scrollProducts('ffProducts', 400)">
-          ❯
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="product-row" id="ffProducts">
-
-      <div class="product-card">
-
-        <div class="game-art ff-art">
-          <div class="game-art-content">
-            <span class="big-icon">💎</span>
-            <strong>FREE FIRE</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-          <div class="product-name">100 + 10 Diamonds</div>
-          <div class="product-subtitle">Free Fire Diamonds</div>
-
-          <div class="product-bottom">
-            <div class="price">GYD $350</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Free Fire', '100 + 10 Diamonds', 350)">
-              BUY
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art ff-art">
-          <div class="game-art-content">
-            <span class="big-icon">💎</span>
-            <strong>FREE FIRE</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-          <div class="product-name">310 + 31 Diamonds</div>
-          <div class="product-subtitle">Free Fire Diamonds</div>
-
-          <div class="product-bottom">
-            <div class="price">GYD $1,000</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Free Fire', '310 + 31 Diamonds', 1000)">
-              BUY
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art ff-art">
-          <div class="game-art-content">
-            <span class="big-icon">💎</span>
-            <strong>FREE FIRE</strong>
-          </div>
-        </div>
-
-        <div class="product-info">
-          <div class="product-name">520 + 52 Diamonds</div>
-          <div class="product-subtitle">Free Fire Diamonds</div>
-
-          <div class="product-bottom">
-            <div class="price">GYD $1,650</div>
-
-            <button class="buy-btn"
-                    onclick="buyProduct('Free Fire', '520 + 52 Diamonds', 1650)">
-              BUY
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="product-card">
-
-        <div class="game-art ff-art">
-          <div class="game-art-content">
-            <span class="big-icon">💎</span>
-            <strong>FREE FIRE</strong>
-          </div>
-  </div>                      
+Return the complete replacement "index.html" code, from "<!DOCTYPE html>" through "</html>", ready to paste into GitHub Pages.

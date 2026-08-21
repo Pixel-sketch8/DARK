@@ -1,273 +1,430 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DARK | Digital Entertainment</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DARK | Digital Entertainment</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #05070b;
-      color: #fff;
-      min-height: 100vh;
-    }
-
-    header {
-      background: rgba(5, 7, 11, 0.95);
-      border-bottom: 1px solid #12345a;
-      padding: 18px 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 4px;
-      color: #fff;
-      text-shadow: 0 0 15px #008cff;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-    }
-
-    nav a {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 15px;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #00aaff;
-      text-shadow: 0 0 10px #008cff;
-    }
-
-    .hero {
-      min-height: 75vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-      background:
-        radial-gradient(circle at center, #09233d 0%, #05070b 55%, #020305 100%);
-    }
-
-    .hero-content {
-      max-width: 850px;
-    }
-
-    .hero h1 {
-      font-size: clamp(48px, 10vw, 100px);
-      letter-spacing: 12px;
-      margin-bottom: 15px;
-      text-shadow:
-        0 0 10px #008cff,
-        0 0 30px #005eff;
-    }
-
-    .hero p {
-      color: #b8c4d0;
-      font-size: 19px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 30px;
-      border: 1px solid #008cff;
-      border-radius: 6px;
-      color: #fff;
-      text-decoration: none;
-      background: #071522;
-      box-shadow: 0 0 15px rgba(0, 140, 255, 0.35);
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #008cff;
-      box-shadow: 0 0 25px #008cff;
-    }
-
-    section {
-      padding: 70px 6%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 40px;
-      text-shadow: 0 0 12px #008cff;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, #0a1018, #05080d);
-      border: 1px solid #123b61;
-      border-radius: 12px;
-      padding: 30px 22px;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #008cff;
-      box-shadow: 0 0 25px rgba(0, 140, 255, 0.25);
-    }
-
-    .card h3 {
-      color: #00aaff;
-      margin-bottom: 12px;
-      font-size: 21px;
-    }
-
-    .card p {
-      color: #aab5c0;
-      line-height: 1.5;
-    }
-
-    footer {
-      border-top: 1px solid #12345a;
-      text-align: center;
-      padding: 30px 20px;
-      color: #718096;
-      background: #030509;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        padding: 15px 5%;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        min-height: 70vh;
-      }
-
-      .hero h1 {
-        letter-spacing: 6px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 50px 5%;
-      }
-    }
-  </style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#050608;
+color:#fff;
+overflow-x:hidden
+}
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(5,6,8,.95);
+border-bottom:1px solid #18232b;
+padding:18px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px
+}
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:5px;
+color:#fff;
+text-shadow:0 0 15px #00aaff
+}
+nav{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+justify-content:center
+}
+nav a{
+color:#bbb;
+text-decoration:none;
+font-size:14px;
+font-weight:bold
+}
+nav a:hover{color:#00b7ff}
+.icons{
+display:flex;
+gap:15px;
+font-size:20px
+}
+.hero{
+min-height:650px;
+display:flex;
+align-items:center;
+padding:70px 7%;
+position:relative;
+background:
+radial-gradient(circle at 75% 45%,rgba(0,160,255,.22),transparent 30%),
+linear-gradient(110deg,#050608 35%,#071018 100%)
+}
+.hero-content{max-width:650px}
+.badge{
+display:inline-block;
+padding:8px 14px;
+border:1px solid #00aaff;
+border-radius:30px;
+color:#00b7ff;
+font-size:12px;
+font-weight:bold;
+margin-bottom:20px
+}
+.hero h1{
+font-size:clamp(50px,9vw,100px);
+line-height:.9;
+letter-spacing:6px;
+margin-bottom:25px;
+text-shadow:0 0 30px rgba(0,174,255,.35)
+}
+.hero h1 span{color:#00aaff}
+.hero p{
+font-size:18px;
+line-height:1.7;
+color:#aab4ba;
+margin-bottom:30px
+}
+.buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap
+}
+.btn{
+padding:14px 25px;
+border-radius:7px;
+text-decoration:none;
+font-weight:bold;
+display:inline-block
+}
+.primary{
+background:#00aaff;
+color:#001018;
+box-shadow:0 0 20px rgba(0,170,255,.35)
+}
+.secondary{
+border:1px solid #34434d;
+color:#fff
+}
+section{padding:70px 7%}
+.section-title{
+text-align:center;
+font-size:34px;
+margin-bottom:12px
+}
+.section-sub{
+text-align:center;
+color:#87939a;
+margin-bottom:40px
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px
+}
+.card{
+background:#0a0d10;
+border:1px solid #1a252c;
+border-radius:12px;
+padding:30px 22px;
+transition:.3s
+}
+.card:hover{
+transform:translateY(-6px);
+border-color:#00aaff;
+box-shadow:0 0 25px rgba(0,170,255,.12)
+}
+.card-icon{
+font-size:40px;
+margin-bottom:18px
+}
+.card h3{margin-bottom:10px}
+.card p{
+color:#8f9aa1;
+line-height:1.6;
+font-size:14px
+}
+.products{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px
+}
+.product{
+background:linear-gradient(145deg,#0c1115,#07090b);
+border:1px solid #1a252c;
+border-radius:12px;
+overflow:hidden
+}
+.product-top{
+height:160px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px;
+background:radial-gradient(circle,#07314a,#080b0d 65%)
+}
+.product-info{padding:22px}
+.product-info h3{margin-bottom:8px}
+.price{
+font-size:24px;
+font-weight:bold;
+color:#00b7ff;
+margin:15px 0
+}
+.product-info a{
+display:block;
+text-align:center;
+padding:12px;
+background:#00aaff;
+color:#001018;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold
+}
+.deals{
+background:#071018;
+border-top:1px solid #172630;
+border-bottom:1px solid #172630;
+text-align:center
+}
+.deal-box{
+max-width:800px;
+margin:auto;
+padding:35px;
+border:1px solid #00aaff;
+border-radius:15px;
+box-shadow:0 0 35px rgba(0,170,255,.1)
+}
+.deal-box h2{
+font-size:38px;
+margin-bottom:15px
+}
+.deal-box p{
+color:#aab4ba;
+line-height:1.6;
+margin-bottom:25px
+}
+footer{
+padding:45px 7%;
+background:#030405;
+border-top:1px solid #172027
+}
+.footer-content{
+display:flex;
+justify-content:space-between;
+gap:30px;
+flex-wrap:wrap
+}
+footer h2{
+letter-spacing:4px;
+margin-bottom:12px
+}
+footer p{
+color:#717c82;
+font-size:14px
+}
+.footer-links{
+display:flex;
+gap:20px;
+flex-wrap:wrap
+}
+.footer-links a{
+color:#8d999f;
+text-decoration:none;
+font-size:14px
+}
+.copy{
+margin-top:35px;
+padding-top:20px;
+border-top:1px solid #151b1f;
+color:#555;
+font-size:12px;
+text-align:center
+}
+@media(max-width:900px){
+.cards{grid-template-columns:repeat(2,1fr)}
+.products{grid-template-columns:repeat(2,1fr)}
+header{flex-wrap:wrap}
+nav{order:3;width:100%}
+}
+@media(max-width:600px){
+header{padding:15px 5%}
+.logo{font-size:24px}
+nav{gap:14px}
+nav a{font-size:12px}
+.hero{
+min-height:600px;
+padding:60px 6%;
+text-align:center
+}
+.hero-content{margin:auto}
+.hero p{font-size:16px}
+.buttons{justify-content:center}
+section{padding:55px 6%}
+.cards,.products{grid-template-columns:1fr}
+.section-title{font-size:29px}
+.deal-box{padding:25px 18px}
+.deal-box h2{font-size:30px}
+.footer-content{flex-direction:column}
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">DARK</div>
+<header>
+<div class="logo">DARK</div>
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#entertainment">Movies & TV</a>
-      <a href="#gaming">Gaming</a>
-      <a href="#giftcards">Gift Cards</a>
-      <a href="#services">Services</a>
-      <a href="#deals">Deals</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<nav>
+<a href="#home">Home</a>
+<a href="#entertainment">Movies & TV</a>
+<a href="#gaming">Gaming</a>
+<a href="#giftcards">Gift Cards</a>
+<a href="#services">Services</a>
+<a href="#deals">Deals</a>
+<a href="#contact">Contact</a>
+</nav>
 
-  <main>
+<div class="icons">
+<span>⌕</span>
+<span>🛒</span>
+</div>
+</header>
 
-    <section class="hero">
-      <div class="hero-content">
-        <h1>DARK</h1>
+<main>
 
-        <p>
-          Your digital entertainment hub for streaming,
-          gaming, gift cards and digital services.
-        </p>
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="badge">DIGITAL ENTERTAINMENT</div>
+<h1>WELCOME TO <span>DARK</span></h1>
+<p>
+Your destination for digital entertainment, gaming products,
+gift cards and convenient digital services — all in one place.
+</p>
 
-        <a href="#services" class="btn">Explore DARK</a>
-      </div>
-    </section>
+<div class="buttons">
+<a class="btn primary" href="#entertainment">Explore Now</a>
+<a class="btn secondary" href="#services">Our Services</a>
+</div>
+</div>
+</section>
 
-    <section id="services">
-      <h2 class="section-title">What We Offer</h2>
+<section id="services">
+<h2 class="section-title">What We Offer</h2>
+<p class="section-sub">Everything you need for your digital entertainment experience.</p>
 
-      <div class="services">
+<div class="cards">
 
-        <div class="card" id="entertainment">
-          <h3>Movies & TV</h3>
-          <p>
-            Access entertainment options with flexible
-            digital plans.
-          </p>
-        </div>
+<div class="card">
+<div class="card-icon">🎬</div>
+<h3>Movies & TV</h3>
+<p>Enjoy flexible digital entertainment options with convenient short-term and monthly plans.</p>
+</div>
 
-        <div class="card" id="gaming">
-          <h3>Gaming</h3>
-          <p>
-            Gaming products, top-ups and digital gaming
-            options.
-          </p>
-        </div>
+<div class="card" id="gaming">
+<div class="card-icon">🎮</div>
+<h3>Gaming</h3>
+<p>Gaming top-ups, digital products and entertainment options for your favorite games.</p>
+</div>
 
-        <div class="card" id="giftcards">
-          <h3>Gift Cards</h3>
-          <p>
-            Digital gift cards for your favorite platforms
-            and services.
-          </p>
-        </div>
+<div class="card" id="giftcards">
+<div class="card-icon">🎁</div>
+<h3>Gift Cards</h3>
+<p>Digital gift cards and codes for entertainment, gaming and more.</p>
+</div>
 
-        <div class="card">
-          <h3>Digital Services</h3>
-          <p>
-            Convenient digital products and services
-            available through DARK.
-          </p>
-        </div>
+<div class="card">
+<div class="card-icon">⚡</div>
+<h3>Digital Services</h3>
+<p>Fast and convenient digital services designed around your entertainment needs.</p>
+</div>
 
-        <div class="card" id="deals">
-          <h3>Deals</h3>
-          <p>
-            Discover special offers and selected digital
-            deals.
-          </p>
-        </div>
+</div>
+</section>
 
-      </div>
-    </section>
+<section id="entertainment">
+<h2 class="section-title">Featured Categories</h2>
+<p class="section-sub">Choose your digital experience.</p>
 
-  </main>
+<div class="products">
 
-  <footer id="contact">
-    <p>© 2026 DARK. All rights reserved.</p>
-  </footer>
+<div class="product">
+<div class="product-top">🎬</div>
+<div class="product-info">
+<h3>Movies & TV</h3>
+<p>Digital entertainment plans</p>
+<div class="price">From $5</div>
+<a href="#contact">View Options</a>
+</div>
+</div>
+
+<div class="product">
+<div class="product-top">🎮</div>
+<div class="product-info">
+<h3>Gaming</h3>
+<p>Gaming top-ups & digital products</p>
+<div class="price">From $5</div>
+<a href="#contact">View Options</a>
+</div>
+</div>
+
+<div class="product">
+<div class="product-top">🎁</div>
+<div class="product-info">
+<h3>Gift Cards</h3>
+<p>Digital cards & codes</p>
+<div class="price">Various</div>
+<a href="#contact">View Options</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="deals" id="deals">
+<div class="deal-box">
+<h2>🔥 DARK DEALS</h2>
+<p>
+Check out our latest digital entertainment deals and special offers.
+New deals can be added here whenever they're available.
+</p>
+<a class="btn primary" href="#contact">Shop Deals</a>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">Get In Touch</h2>
+<p class="section-sub">Ready to get started? Contact DARK today.</p>
+
+<div class="buttons" style="justify-content:center">
+<a class="btn primary" href="mailto:contact@darkdigital.com">Contact Us</a>
+<a class="btn secondary" href="#home">Back To Top</a>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="footer-content">
+<div>
+<h2>DARK</h2>
+<p>Digital entertainment. Gaming. Gift cards. Services.</p>
+</div>
+
+<div class="footer-links">
+<a href="#home">Home</a>
+<a href="#entertainment">Movies & TV</a>
+<a href="#gaming">Gaming</a>
+<a href="#giftcards">Gift Cards</a>
+<a href="#services">Services</a>
+<a href="#deals">Deals</a>
+</div>
+</div>
+
+<div class="copy">
+© 2026 DARK. All rights reserved.
+</div>
+</footer>
 
 </body>
 </html>

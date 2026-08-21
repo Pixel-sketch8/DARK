@@ -6,419 +6,438 @@
 <title>DARK — Digital Entertainment</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:#050709;
-color:#fff;
-overflow-x:hidden
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
 }
-a{text-decoration:none;color:inherit}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#05070a;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 header{
-position:sticky;
-top:0;
-z-index:999;
-background:rgba(4,7,9,.96);
-border-bottom:1px solid #17252d;
-padding:16px 5%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,7,10,.94);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(0,174,255,.18);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  height:75px;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .logo{
-font-size:32px;
-font-weight:900;
-letter-spacing:6px;
-text-shadow:0 0 18px #00aaff
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:4px;
+  color:#fff;
+  text-shadow:0 0 12px #00aaff;
+}
+
+.logo span{
+  color:#00aaff;
 }
 
 nav{
-display:flex;
-gap:24px;
-align-items:center;
-justify-content:center;
-flex-wrap:wrap
+  display:flex;
+  gap:25px;
 }
 
 nav a{
-font-size:13px;
-font-weight:bold;
-color:#aab3b8;
-transition:.2s
+  font-size:14px;
+  color:#c9d4df;
+  transition:.3s;
 }
 
-nav a:hover{color:#00b7ff}
+nav a:hover{
+  color:#00b7ff;
+  text-shadow:0 0 10px #00aaff;
+}
 
-.header-icons{
-display:flex;
-gap:16px;
-font-size:20px
+.nav-icons{
+  display:flex;
+  gap:10px;
+}
+
+.icon-btn{
+  width:38px;
+  height:38px;
+  border:1px solid #17384b;
+  background:#0a1016;
+  color:#fff;
+  border-radius:10px;
+  cursor:pointer;
 }
 
 .hero{
-min-height:650px;
-display:flex;
-align-items:center;
-padding:80px 7%;
-position:relative;
-background:
-radial-gradient(circle at 80% 45%,rgba(0,170,255,.22),transparent 30%),
-radial-gradient(circle at 65% 80%,rgba(40,255,120,.08),transparent 25%),
-linear-gradient(120deg,#050709,#071118)
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  background:
+    radial-gradient(circle at 75% 35%,rgba(0,153,255,.25),transparent 35%),
+    radial-gradient(circle at 20% 80%,rgba(0,255,130,.08),transparent 30%),
+    linear-gradient(135deg,#05070a,#07121b 55%,#020509);
 }
 
-.hero-content{max-width:680px}
+.hero-content{
+  width:1200px;
+  max-width:100%;
+  margin:auto;
+  padding:80px 25px;
+}
 
-.tag{
-display:inline-block;
-border:1px solid #00aaff;
-color:#00b7ff;
-padding:8px 16px;
-border-radius:30px;
-font-size:11px;
-font-weight:bold;
-letter-spacing:2px;
-margin-bottom:22px
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border:1px solid #00aaff;
+  border-radius:30px;
+  color:#00b7ff;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:2px;
+  margin-bottom:20px;
+  box-shadow:0 0 15px rgba(0,170,255,.18);
 }
 
 .hero h1{
-font-size:clamp(55px,9vw,105px);
-line-height:.88;
-letter-spacing:7px;
-margin-bottom:25px
+  max-width:700px;
+  font-size:clamp(48px,8vw,88px);
+  line-height:.95;
+  letter-spacing:-4px;
+  margin-bottom:25px;
 }
 
-.hero h1 span{color:#00aaff}
+.hero h1 span{
+  color:#00aaff;
+  text-shadow:0 0 25px rgba(0,170,255,.7);
+}
 
 .hero p{
-color:#9da8ae;
-font-size:17px;
-line-height:1.7;
-max-width:590px;
-margin-bottom:30px
+  max-width:600px;
+  color:#9caab7;
+  font-size:18px;
+  line-height:1.7;
+  margin-bottom:35px;
 }
 
 .buttons{
-display:flex;
-gap:14px;
-flex-wrap:wrap
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
 }
 
 .btn{
-padding:14px 25px;
-border-radius:7px;
-font-weight:bold;
-font-size:14px;
-display:inline-block
+  padding:14px 25px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+  display:inline-block;
+  transition:.3s;
 }
 
-.btn-main{
-background:#00aaff;
-color:#001016;
-box-shadow:0 0 25px rgba(0,170,255,.3)
+.primary{
+  background:#00aaff;
+  color:#001018;
+  box-shadow:0 0 22px rgba(0,170,255,.35);
 }
 
-.btn-alt{
-border:1px solid #35434b;
-color:#fff
+.primary:hover{
+  background:#36c1ff;
+  transform:translateY(-2px);
 }
 
-section{padding:75px 7%}
-
-.title{
-text-align:center;
-font-size:34px;
-margin-bottom:10px
+.secondary{
+  border:1px solid #294252;
+  background:#0b1117;
+  color:#fff;
 }
 
-.subtitle{
-text-align:center;
-color:#7f8b91;
-margin-bottom:40px
+.secondary:hover{
+  border-color:#00aaff;
+  color:#00b7ff;
 }
 
-/* CATEGORIES */
-
-.categories{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px
+section{
+  padding:85px 20px;
 }
 
-.category{
-background:#0a0e11;
-border:1px solid #1a272e;
-border-radius:14px;
-padding:30px 22px;
-transition:.3s
+.container{
+  max-width:1200px;
+  margin:auto;
 }
 
-.category:hover{
-border-color:#00aaff;
-transform:translateY(-5px);
-box-shadow:0 0 25px rgba(0,170,255,.12)
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
 }
 
-.category-icon{
-font-size:42px;
-margin-bottom:18px
+.section-title h2{
+  font-size:38px;
+  margin-bottom:10px;
 }
 
-.category h3{margin-bottom:10px}
-
-.category p{
-color:#87939a;
-font-size:14px;
-line-height:1.6
+.section-title p{
+  color:#7f8c98;
 }
 
-/* PRODUCTS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
 
-.product-section{
-background:#070a0d;
-border-top:1px solid #101b21;
-border-bottom:1px solid #101b21
+.card{
+  background:linear-gradient(145deg,#0b1117,#070a0e);
+  border:1px solid #172b38;
+  border-radius:16px;
+  padding:28px 22px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#00aaff;
+  box-shadow:0 0 25px rgba(0,170,255,.12);
+}
+
+.card-icon{
+  font-size:35px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.card p{
+  color:#8795a1;
+  line-height:1.6;
+  font-size:14px;
 }
 
 .products{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px
+  background:#070a0e;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
 }
 
 .product{
-background:#0b1014;
-border:1px solid #1a272e;
-border-radius:13px;
-overflow:hidden;
-transition:.3s
+  background:#0b1016;
+  border:1px solid #192b37;
+  border-radius:16px;
+  overflow:hidden;
+  transition:.3s;
 }
 
 .product:hover{
-transform:translateY(-6px);
-border-color:#00aaff;
-box-shadow:0 0 28px rgba(0,170,255,.14)
+  border-color:#00aaff;
+  transform:translateY(-5px);
 }
 
-/*
-CHANGE PRODUCT IMAGES HERE.
-Replace the image URL inside each img src=""
-with your own image later.
-*/
-
-.product-image{
-height:190px;
-background:#080d11;
-overflow:hidden
+.product-top{
+  height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  background:
+    radial-gradient(circle,#12374c,transparent 65%),
+    #080d12;
 }
 
-.product-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block
+.product-body{
+  padding:22px;
 }
 
-.product-info{padding:20px}
-
-.product-info h3{
-font-size:18px;
-margin-bottom:8px
+.product-body h3{
+  margin-bottom:8px;
 }
 
-.product-info p{
-color:#7f8b91;
-font-size:13px;
-line-height:1.5
+.product-body p{
+  color:#8996a2;
+  font-size:14px;
+  line-height:1.5;
+  margin-bottom:18px;
 }
 
 .price{
-color:#00b7ff;
-font-size:22px;
-font-weight:bold;
-margin:15px 0
+  color:#00b7ff;
+  font-size:21px;
+  font-weight:bold;
+  margin-bottom:18px;
 }
 
-.buy{
-display:block;
-text-align:center;
-padding:11px;
-background:#00aaff;
-color:#001016;
-border-radius:6px;
-font-weight:bold
+.product-btn{
+  display:block;
+  text-align:center;
+  padding:11px;
+  border:1px solid #00aaff;
+  border-radius:8px;
+  color:#00b7ff;
 }
 
-/* SERVICES */
-
-.service-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px
+.product-btn:hover{
+  background:#00aaff;
+  color:#001018;
 }
-
-.service{
-padding:30px;
-border-radius:13px;
-background:linear-gradient(145deg,#0c1216,#080b0d);
-border:1px solid #1a272e
-}
-
-.service-icon{
-font-size:35px;
-margin-bottom:15px
-}
-
-.service h3{margin-bottom:10px}
-
-.service p{
-color:#87939a;
-font-size:14px;
-line-height:1.6
-}
-
-/* DEALS */
 
 .deals{
-text-align:center;
-background:
-radial-gradient(circle,rgba(0,170,255,.13),transparent 45%),
-#060a0d
+  background:
+    radial-gradient(circle at center,rgba(0,170,255,.12),transparent 50%),
+    #05070a;
 }
 
 .deal-box{
-max-width:850px;
-margin:auto;
-padding:45px 25px;
-border:1px solid #00aaff;
-border-radius:16px;
-box-shadow:0 0 35px rgba(0,170,255,.12)
+  border:1px solid #00aaff;
+  border-radius:20px;
+  padding:45px;
+  text-align:center;
+  background:linear-gradient(135deg,#07121a,#080d12);
+  box-shadow:0 0 35px rgba(0,170,255,.1);
 }
 
 .deal-box h2{
-font-size:40px;
-margin-bottom:15px
+  font-size:38px;
+  margin-bottom:15px;
 }
 
 .deal-box p{
-color:#8d999f;
-line-height:1.7;
-margin-bottom:25px
+  color:#94a2ad;
+  margin-bottom:25px;
 }
 
-/* CONTACT */
-
-.contact{text-align:center}
-
-.contact p{
-color:#87939a;
-margin:15px auto 25px;
-max-width:600px;
-line-height:1.6
+.contact{
+  text-align:center;
 }
 
-/* FOOTER */
+.contact-box{
+  max-width:700px;
+  margin:auto;
+  padding:40px;
+  border:1px solid #182e3c;
+  border-radius:18px;
+  background:#080d12;
+}
+
+.contact-box p{
+  color:#8b99a5;
+  line-height:1.7;
+  margin:15px 0 25px;
+}
 
 footer{
-background:#030506;
-border-top:1px solid #172229;
-padding:45px 7%
+  border-top:1px solid #152631;
+  background:#030507;
+  padding:35px 20px;
+  text-align:center;
 }
 
-.footer-top{
-display:flex;
-justify-content:space-between;
-gap:30px;
-flex-wrap:wrap
+footer .logo{
+  margin-bottom:12px;
 }
 
-.footer-logo{
-font-size:28px;
-font-weight:900;
-letter-spacing:5px;
-text-shadow:0 0 15px #00aaff
+footer p{
+  color:#65727d;
+  font-size:13px;
 }
 
-.footer-text{
-color:#68747a;
-font-size:13px;
-margin-top:10px
+@media(max-width:900px){
+  nav{
+    display:none;
+  }
+
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 
-.footer-links{
-display:flex;
-gap:20px;
-flex-wrap:wrap
-}
+@media(max-width:600px){
+  .navbar{
+    height:65px;
+    padding:0 15px;
+  }
 
-.footer-links a{
-color:#7f8a90;
-font-size:13px
-}
+  .logo{
+    font-size:24px;
+  }
 
-.copyright{
-border-top:1px solid #111a1f;
-margin-top:30px;
-padding-top:20px;
-text-align:center;
-color:#4f595e;
-font-size:12px
-}
+  .hero{
+    min-height:580px;
+  }
 
-/* MOBILE */
+  .hero-content{
+    padding:65px 20px;
+  }
 
-@media(max-width:1000px){
-.categories{grid-template-columns:repeat(2,1fr)}
-.products{grid-template-columns:repeat(2,1fr)}
-}
+  .hero h1{
+    font-size:54px;
+    letter-spacing:-3px;
+  }
 
-@media(max-width:700px){
-header{
-padding:14px 5%;
-flex-wrap:wrap
-}
+  .hero p{
+    font-size:15px;
+  }
 
-.logo{font-size:26px}
+  section{
+    padding:65px 15px;
+  }
 
-nav{
-order:3;
-width:100%;
-gap:13px
-}
+  .section-title h2{
+    font-size:30px;
+  }
 
-nav a{font-size:11px}
+  .cards,
+  .product-grid{
+    grid-template-columns:1fr;
+  }
 
-.hero{
-min-height:600px;
-padding:65px 6%;
-text-align:center
-}
+  .deal-box{
+    padding:30px 20px;
+  }
 
-.hero-content{margin:auto}
+  .deal-box h2{
+    font-size:29px;
+  }
 
-.hero p{font-size:15px}
+  .buttons{
+    flex-direction:column;
+  }
 
-.buttons{justify-content:center}
-
-section{padding:55px 6%}
-
-.categories,
-.products,
-.service-grid{
-grid-template-columns:1fr
-}
-
-.title{font-size:29px}
-
-.deal-box h2{font-size:30px}
-
-.footer-top{
-flex-direction:column
-}
+  .btn{
+    text-align:center;
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -426,348 +445,182 @@ flex-direction:column
 <body>
 
 <header>
+  <div class="navbar">
+    <a href="#" class="logo">D<span>A</span>RK</a>
 
-<div class="logo">DARK</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#entertainment">Movies & TV</a>
+      <a href="#gaming">Gaming</a>
+      <a href="#giftcards">Gift Cards</a>
+      <a href="#services">Services</a>
+      <a href="#deals">Deals</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-<nav>
-<a href="#home">HOME</a>
-<a href="#movies">MOVIES & TV</a>
-<a href="#gaming">GAMING</a>
-<a href="#giftcards">GIFT CARDS</a>
-<a href="#services">SERVICES</a>
-<a href="#deals">DEALS</a>
-<a href="#contact">CONTACT</a>
-</nav>
-
-<div class="header-icons">
-<span>⌕</span>
-<span>🛒</span>
-</div>
-
+    <div class="nav-icons">
+      <button class="icon-btn">⌕</button>
+      <button class="icon-btn">🛒</button>
+    </div>
+  </div>
 </header>
 
 <main>
 
-<!-- HERO -->
-
 <section class="hero" id="home">
+  <div class="hero-content">
+    <div class="badge">DIGITAL ENTERTAINMENT</div>
 
-<div class="hero-content">
+    <h1>
+      ENTER THE<br>
+      <span>DARK.</span>
+    </h1>
 
-<div class="tag">DIGITAL ENTERTAINMENT</div>
+    <p>
+      Your destination for digital entertainment, gaming,
+      gift cards and premium digital services.
+    </p>
 
-<h1>WELCOME TO <span>DARK</span></h1>
-
-<p>
-Your destination for movies, TV entertainment, gaming,
-gift cards and digital services. Everything you want,
-all in one place.
-</p>
-
-<div class="buttons">
-<a class="btn btn-main" href="#movies">SHOP NOW</a>
-<a class="btn btn-alt" href="#services">EXPLORE SERVICES</a>
-</div>
-
-</div>
-
+    <div class="buttons">
+      <a href="#entertainment" class="btn primary">EXPLORE NOW</a>
+      <a href="#services" class="btn secondary">VIEW SERVICES</a>
+    </div>
+  </div>
 </section>
-
-
-<!-- CATEGORIES -->
-
-<section>
-
-<h2 class="title">EXPLORE DARK</h2>
-
-<p class="subtitle">
-Discover our digital entertainment categories.
-</p>
-
-<div class="categories">
-
-<div class="category">
-<div class="category-icon">🎬</div>
-<h3>Movies & TV</h3>
-<p>
-Entertainment plans and digital access options.
-</p>
-</div>
-
-<div class="category">
-<div class="category-icon">🎮</div>
-<h3>Gaming</h3>
-<p>
-Gaming top-ups, digital products and more.
-</p>
-</div>
-
-<div class="category">
-<div class="category-icon">🎁</div>
-<h3>Gift Cards</h3>
-<p>
-Digital gift cards and codes for your favorite platforms.
-</p>
-</div>
-
-<div class="category">
-<div class="category-icon">⚡</div>
-<h3>Digital Services</h3>
-<p>
-Fast and convenient digital services.
-</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MOVIES -->
-
-<section class="product-section" id="movies">
-
-<h2 class="title">MOVIES & TV</h2>
-
-<p class="subtitle">
-Choose the entertainment option that works for you.
-</p>
-
-<div class="products">
-
-<div class="product">
-
-<div class="product-image">
-<img src="https://via.placeholder.com/600x400/07131c/00aaff?text=MOVIE+%26+TV" alt="Movies and TV">
-</div>
-
-<div class="product-info">
-<h3>Entertainment Plan</h3>
-<p>1 Week Digital Entertainment</p>
-<div class="price">$5</div>
-<a class="buy" href="#contact">GET NOW</a>
-</div>
-
-</div>
-
-
-<div class="product">
-
-<div class="product-image">
-<img src="https://via.placeholder.com/600x400/07131c/00aaff?text=PREMIUM+TV" alt="Premium TV">
-</div>
-
-<div class="product-info">
-<h3>Premium Plan</h3>
-<p>1 Month Digital Entertainment</p>
-<div class="price">$15</div>
-<a class="buy" href="#contact">GET NOW</a>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- GAMING -->
-
-<section id="gaming">
-
-<h2 class="title">GAMING</h2>
-
-<p class="subtitle">
-Level up with digital gaming products.
-</p>
-
-<div class="products">
-
-<div class="product">
-
-<div class="product-image">
-<img src="https://via.placeholder.com/600x400/08120d/20ff78?text=GAME+TOP+UP" alt="Game top up">
-</div>
-
-<div class="product-info">
-<h3>Game Top-Up</h3>
-<p>Add credit to your favorite game.</p>
-<div class="price">From $5</div>
-<a class="buy" href="#contact">GET NOW</a>
-</div>
-
-</div>
-
-
-<div class="product">
-
-<div class="product-image">
-<img src="https://via.placeholder.com/600x400/08120d/20ff78?text=GAMING" alt="Gaming product">
-</div>
-
-<div class="product-info">
-<h3>Gaming Products</h3>
-<p>Digital gaming products and codes.</p>
-<div class="price">From $5</div>
-<a class="buy" href="#contact">GET NOW</a>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- GIFT CARDS -->
-
-<section class="product-section" id="giftcards">
-
-<h2 class="title">GIFT CARDS</h2>
-
-<p class="subtitle">
-Digital gift cards and codes.
-</p>
-
-<div class="products">
-
-<div class="product">
-
-<div class="product-image">
-<img src="https://via.placeholder.com/600x400/101008/ffd000?text=GIFT+CARD" alt="Gift card">
-</div>
-
-<div class="product-info">
-<h3>Digital Gift Card</h3>
-<p>Choose from available digital cards.</p>
-<div class="price">Various</div>
-<a class="buy" href="#contact">VIEW OPTIONS</a>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SERVICES -->
 
 <section id="services">
+  <div class="container">
 
-<h2 class="title">OUR SERVICES</h2>
+    <div class="section-title">
+      <h2>What We Offer</h2>
+      <p>Everything you need for your digital entertainment.</p>
+    </div>
 
-<p class="subtitle">
-Digital services designed for entertainment and gaming.
-</p>
+    <div class="cards">
 
-<div class="service-grid">
+      <div class="card">
+        <div class="card-icon">🎬</div>
+        <h3>Movies & TV</h3>
+        <p>
+          Digital entertainment options for your favorite
+          movies and television content.
+        </p>
+      </div>
 
-<div class="service">
-<div class="service-icon">⚡</div>
-<h3>Fast Delivery</h3>
-<p>
-Digital products can be delivered quickly after your order is confirmed.
-</p>
-</div>
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <h3>Gaming</h3>
+        <p>
+          Gaming products, top-ups and digital gaming
+          services for your favorite platforms.
+        </p>
+      </div>
 
-<div class="service">
-<div class="service-icon">🔐</div>
-<h3>Digital Access</h3>
-<p>
-Convenient digital entertainment and gaming options.
-</p>
-</div>
+      <div class="card">
+        <div class="card-icon">🎁</div>
+        <h3>Gift Cards</h3>
+        <p>
+          Digital gift cards and entertainment cards
+          for yourself or someone special.
+        </p>
+      </div>
 
-<div class="service">
-<div class="service-icon">💬</div>
-<h3>Customer Support</h3>
-<p>
-Have a question? Contact DARK for assistance.
-</p>
-</div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Digital Services</h3>
+        <p>
+          Convenient digital services designed to make
+          your entertainment experience easier.
+        </p>
+      </div>
 
-</div>
-
+    </div>
+  </div>
 </section>
 
+<section class="products" id="entertainment">
+  <div class="container">
 
-<!-- DEALS -->
+    <div class="section-title">
+      <h2>Featured</h2>
+      <p>Explore some of our digital entertainment options.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product">
+        <div class="product-top">🎬</div>
+        <div class="product-body">
+          <h3>Entertainment Access</h3>
+          <p>Choose from flexible digital entertainment access options.</p>
+          <div class="price">From $5</div>
+          <a href="#contact" class="product-btn">VIEW OPTIONS</a>
+        </div>
+      </div>
+
+      <div class="product" id="gaming">
+        <div class="product-top">🎮</div>
+        <div class="product-body">
+          <h3>Gaming Top-Up</h3>
+          <p>Power up your gaming experience with digital top-up options.</p>
+          <div class="price">From $5</div>
+          <a href="#contact" class="product-btn">VIEW OPTIONS</a>
+        </div>
+      </div>
+
+      <div class="product" id="giftcards">
+        <div class="product-top">🎁</div>
+        <div class="product-body">
+          <h3>Digital Gift Cards</h3>
+          <p>Digital gift cards for entertainment and gaming.</p>
+          <div class="price">From $10</div>
+          <a href="#contact" class="product-btn">VIEW OPTIONS</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <section class="deals" id="deals">
-
-<div class="deal-box">
-
-<h2>🔥 DARK DEALS</h2>
-
-<p>
-Check back regularly for special offers,
-new products and limited-time digital deals.
-</p>
-
-<a class="btn btn-main" href="#contact">VIEW DEALS</a>
-
-</div>
-
+  <div class="container">
+    <div class="deal-box">
+      <h2>🔥 DARK DEALS</h2>
+      <p>
+        Keep an eye out for special offers and limited-time
+        digital entertainment deals.
+      </p>
+      <a href="#contact" class="btn primary">GET STARTED</a>
+    </div>
+  </div>
 </section>
 
-
-<!-- CONTACT -->
-
 <section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div class="section-title">
+        <h2>Contact DARK</h2>
+        <p>Need help choosing a digital product?</p>
+      </div>
 
-<h2 class="title">READY TO GET STARTED?</h2>
+      <p>
+        Contact us for product information, availability,
+        pricing and support.
+      </p>
 
-<p>
-Choose your product or service and contact DARK
-for availability and ordering information.
-</p>
-
-<div class="buttons" style="justify-content:center">
-
-<a class="btn btn-main" href="mailto:contact@darkdigital.com">
-CONTACT DARK
-</a>
-
-<a class="btn btn-alt" href="#home">
-BACK TO TOP
-</a>
-
-</div>
-
+      <a href="mailto:darkdigital@example.com" class="btn primary">
+        CONTACT US
+      </a>
+    </div>
+  </div>
 </section>
 
 </main>
 
-
 <footer>
-
-<div class="footer-top">
-
-<div>
-<div class="footer-logo">DARK</div>
-<div class="footer-text">
-Digital Entertainment • Gaming • Gift Cards
-</div>
-</div>
-
-<div class="footer-links">
-<a href="#home">Home</a>
-<a href="#movies">Movies & TV</a>
-<a href="#gaming">Gaming</a>
-<a href="#giftcards">Gift Cards</a>
-<a href="#services">Services</a>
-<a href="#deals">Deals</a>
-<a href="#contact">Contact</a>
-</div>
-
-</div>
-
-<div class="copyright">
-© 2026 DARK. All rights reserved.
-</div>
-
+  <div class="logo">D<span>A</span>RK</div>
+  <p>© 2026 DARK. Digital Entertainment.</p>
 </footer>
 
 </body>
-  </html>
+</html>

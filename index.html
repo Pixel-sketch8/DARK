@@ -1,626 +1,525 @@
-<!DOCTYPE html>
+
+
+    
+          <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DARK — Digital Entertainment</title>
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:#05070a;
-  color:#fff;
-  overflow-x:hidden;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(5,7,10,.94);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid rgba(0,174,255,.18);
-}
-
-.navbar{
-  max-width:1200px;
-  margin:auto;
-  height:75px;
-  padding:0 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:4px;
-  color:#fff;
-  text-shadow:0 0 12px #00aaff;
-}
-
-.logo span{
-  color:#00aaff;
-}
-
-nav{
-  display:flex;
-  gap:25px;
-}
-
-nav a{
-  font-size:14px;
-  color:#c9d4df;
-  transition:.3s;
-}
-
-nav a:hover{
-  color:#00b7ff;
-  text-shadow:0 0 10px #00aaff;
-}
-
-.nav-icons{
-  display:flex;
-  gap:10px;
-}
-
-.icon-btn{
-  width:38px;
-  height:38px;
-  border:1px solid #17384b;
-  background:#0a1016;
-  color:#fff;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.hero{
-  min-height:650px;
-  display:flex;
-  align-items:center;
-  position:relative;
-  background:
-    radial-gradient(circle at 75% 35%,rgba(0,153,255,.25),transparent 35%),
-    radial-gradient(circle at 20% 80%,rgba(0,255,130,.08),transparent 30%),
-    linear-gradient(135deg,#05070a,#07121b 55%,#020509);
-}
-
-.hero-content{
-  width:1200px;
-  max-width:100%;
-  margin:auto;
-  padding:80px 25px;
-}
-
-.badge{
-  display:inline-block;
-  padding:8px 14px;
-  border:1px solid #00aaff;
-  border-radius:30px;
-  color:#00b7ff;
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:2px;
-  margin-bottom:20px;
-  box-shadow:0 0 15px rgba(0,170,255,.18);
-}
-
-.hero h1{
-  max-width:700px;
-  font-size:clamp(48px,8vw,88px);
-  line-height:.95;
-  letter-spacing:-4px;
-  margin-bottom:25px;
-}
-
-.hero h1 span{
-  color:#00aaff;
-  text-shadow:0 0 25px rgba(0,170,255,.7);
-}
-
-.hero p{
-  max-width:600px;
-  color:#9caab7;
-  font-size:18px;
-  line-height:1.7;
-  margin-bottom:35px;
-}
-
-.buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-.btn{
-  padding:14px 25px;
-  border-radius:9px;
-  font-weight:bold;
-  cursor:pointer;
-  display:inline-block;
-  transition:.3s;
-}
-
-.primary{
-  background:#00aaff;
-  color:#001018;
-  box-shadow:0 0 22px rgba(0,170,255,.35);
-}
-
-.primary:hover{
-  background:#36c1ff;
-  transform:translateY(-2px);
-}
-
-.secondary{
-  border:1px solid #294252;
-  background:#0b1117;
-  color:#fff;
-}
-
-.secondary:hover{
-  border-color:#00aaff;
-  color:#00b7ff;
-}
-
-section{
-  padding:85px 20px;
-}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:45px;
-}
-
-.section-title h2{
-  font-size:38px;
-  margin-bottom:10px;
-}
-
-.section-title p{
-  color:#7f8c98;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-
-.card{
-  background:linear-gradient(145deg,#0b1117,#070a0e);
-  border:1px solid #172b38;
-  border-radius:16px;
-  padding:28px 22px;
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  border-color:#00aaff;
-  box-shadow:0 0 25px rgba(0,170,255,.12);
-}
-
-.card-icon{
-  font-size:35px;
-  margin-bottom:18px;
-}
-
-.card h3{
-  margin-bottom:10px;
-  font-size:20px;
-}
-
-.card p{
-  color:#8795a1;
-  line-height:1.6;
-  font-size:14px;
-}
-
-.products{
-  background:#070a0e;
-}
-
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-
-.product{
-  background:#0b1016;
-  border:1px solid #192b37;
-  border-radius:16px;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.product:hover{
-  border-color:#00aaff;
-  transform:translateY(-5px);
-}
-
-.product-top{
-  height:150px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:48px;
-  background:
-    radial-gradient(circle,#12374c,transparent 65%),
-    #080d12;
-}
-
-.product-body{
-  padding:22px;
-}
-
-.product-body h3{
-  margin-bottom:8px;
-}
-
-.product-body p{
-  color:#8996a2;
-  font-size:14px;
-  line-height:1.5;
-  margin-bottom:18px;
-}
-
-.price{
-  color:#00b7ff;
-  font-size:21px;
-  font-weight:bold;
-  margin-bottom:18px;
-}
-
-.product-btn{
-  display:block;
-  text-align:center;
-  padding:11px;
-  border:1px solid #00aaff;
-  border-radius:8px;
-  color:#00b7ff;
-}
-
-.product-btn:hover{
-  background:#00aaff;
-  color:#001018;
-}
-
-.deals{
-  background:
-    radial-gradient(circle at center,rgba(0,170,255,.12),transparent 50%),
-    #05070a;
-}
-
-.deal-box{
-  border:1px solid #00aaff;
-  border-radius:20px;
-  padding:45px;
-  text-align:center;
-  background:linear-gradient(135deg,#07121a,#080d12);
-  box-shadow:0 0 35px rgba(0,170,255,.1);
-}
-
-.deal-box h2{
-  font-size:38px;
-  margin-bottom:15px;
-}
-
-.deal-box p{
-  color:#94a2ad;
-  margin-bottom:25px;
-}
-
-.contact{
-  text-align:center;
-}
-
-.contact-box{
-  max-width:700px;
-  margin:auto;
-  padding:40px;
-  border:1px solid #182e3c;
-  border-radius:18px;
-  background:#080d12;
-}
-
-.contact-box p{
-  color:#8b99a5;
-  line-height:1.7;
-  margin:15px 0 25px;
-}
-
-footer{
-  border-top:1px solid #152631;
-  background:#030507;
-  padding:35px 20px;
-  text-align:center;
-}
-
-footer .logo{
-  margin-bottom:12px;
-}
-
-footer p{
-  color:#65727d;
-  font-size:13px;
-}
-
-@media(max-width:900px){
-  nav{
-    display:none;
-  }
-
-  .cards{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .product-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:600px){
-  .navbar{
-    height:65px;
-    padding:0 15px;
-  }
-
-  .logo{
-    font-size:24px;
-  }
-
-  .hero{
-    min-height:580px;
-  }
-
-  .hero-content{
-    padding:65px 20px;
-  }
-
-  .hero h1{
-    font-size:54px;
-    letter-spacing:-3px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  section{
-    padding:65px 15px;
-  }
-
-  .section-title h2{
-    font-size:30px;
-  }
-
-  .cards,
-  .product-grid{
-    grid-template-columns:1fr;
-  }
-
-  .deal-box{
-    padding:30px 20px;
-  }
-
-  .deal-box h2{
-    font-size:29px;
-  }
-
-  .buttons{
-    flex-direction:column;
-  }
-
-  .btn{
-    text-align:center;
-    width:100%;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARK | Your Digital Entertainment & Gaming Hub</title>
+  <style>
+    :root {
+      --bg-color: #03070d;
+      --card-bg: rgba(9, 17, 30, 0.8);
+      --accent-blue: #00e5ff;
+      --accent-green: #00ff88;
+      --text-main: #ffffff;
+      --text-muted: #8b9bb4;
+      --border-blue: rgba(0, 229, 255, 0.4);
+      --border-green: rgba(0, 255, 136, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Canvas Background */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background: rgba(3, 7, 13, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--accent-blue);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent-blue);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 15px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      margin-bottom: 25px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(3, 7, 13, 0.6);
+      backdrop-filter: blur(5px);
+    }
+
+    .btn-blue {
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-blue);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    }
+
+    .btn-blue:hover {
+      background: var(--accent-blue);
+      color: #000;
+      box-shadow: 0 0 20px var(--accent-blue);
+    }
+
+    .btn-green {
+      border: 1px solid var(--accent-green);
+      color: var(--accent-green);
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+    }
+
+    .btn-green:hover {
+      background: var(--accent-green);
+      color: #000;
+      box-shadow: 0 0 20px var(--accent-green);
+    }
+
+    /* Section Headers */
+    .section-title {
+      text-align: center;
+      font-size: 24px;
+      margin: 40px 0 20px;
+    }
+
+    /* Categories Grid */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 0 5% 40px;
+    }
+
+    .category-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-blue);
+      border-radius: 12px;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .category-card.green-accent {
+      border-color: var(--border-green);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .category-card p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    /* Media/Product Image Grid */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 0 5% 40px;
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border 0.3s ease;
+    }
+
+    .item-card:hover {
+      border-color: var(--accent-blue);
+    }
+
+    .item-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .item-card h4 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .item-card select {
+      width: 100%;
+      padding: 8px;
+      background: #040914;
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      margin: 8px 0;
+    }
+
+    /* Floating Widgets */
+    .widget-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .chat-widget {
+      background: rgba(9, 17, 30, 0.9);
+      border: 1px solid var(--accent-blue);
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+      cursor: pointer;
+    }
+
+    .whatsapp-widget {
+      background: #00e676;
+      color: #000;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 30px 5%;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      background: rgba(3, 7, 13, 0.85);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 10px 0;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <div class="navbar">
-    <a href="#" class="logo">D<span>A</span>RK</a>
+  <!-- Background Motion Canvas -->
+  <canvas id="bg-canvas"></canvas>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#entertainment">Movies & TV</a>
-      <a href="#gaming">Gaming</a>
-      <a href="#giftcards">Gift Cards</a>
-      <a href="#services">Services</a>
-      <a href="#deals">Deals</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="brand">
+      <div class="brand-logo"></div>
+      <span>DARK</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Movies & TV</a></li>
+      <li><a href="#">Gaming</a></li>
+      <li><a href="#">Gift Cards</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Deals</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <span>Search 🔍</span>
+      <span>Cart 🛒</span>
+      <span>Chat 💬</span>
+    </div>
+  </nav>
 
-    <div class="nav-icons">
-      <button class="icon-btn">⌕</button>
-      <button class="icon-btn">🛒</button>
+  <!-- Hero Banner -->
+  <section class="hero">
+    <h1>WELCOME TO DARK</h1>
+    <p>Your Digital Entertainment & Gaming Hub</p>
+    <div class="hero-buttons">
+      <button class="btn btn-blue">Browse Products</button>
+      <button class="btn btn-blue">View Deals</button>
+    </div>
+  </section>
+
+  <!-- Main Categories Section -->
+  <h2 class="section-title">Main Categories</h2>
+  <div class="categories-grid">
+    <div class="category-card">
+      <h3>Movies & TV</h3>
+      <p>Streaming account rentals, weekly and monthly options</p>
+      <button class="btn btn-blue">Large Product</button>
+    </div>
+    <div class="category-card">
+      <h3>Gaming</h3>
+      <p>PUBG Mobile UC, Fortnite V-Bucks, Roblox, Xbox, Steam, etc.</p>
+      <button class="btn btn-blue">View Deals</button>
+    </div>
+    <div class="category-card">
+      <h3>Gift Cards</h3>
+      <p>Roblox, Xbox, Steam, Apple, etc.</p>
+      <button class="btn btn-blue">View Option</button>
+    </div>
+    <div class="category-card green-accent">
+      <h3>Digital Services</h3>
+      <p>MMG, bill payments, mobile/data, etc.</p>
+      <button class="btn btn-green">Money/Prosperity</button>
     </div>
   </div>
-</header>
 
-<main>
-
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="badge">DIGITAL ENTERTAINMENT</div>
-
-    <h1>
-      ENTER THE<br>
-      <span>DARK.</span>
-    </h1>
-
-    <p>
-      Your destination for digital entertainment, gaming,
-      gift cards and premium digital services.
-    </p>
-
-    <div class="buttons">
-      <a href="#entertainment" class="btn primary">EXPLORE NOW</a>
-      <a href="#services" class="btn secondary">VIEW SERVICES</a>
+  <!-- Featured Movies Section -->
+  <h2 class="section-title">🔥 Featured Movies</h2>
+  <div class="items-grid">
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=400&q=80" alt="Movie Trailer">
+      <h4>Movie Trailer</h4>
+      <button class="btn btn-blue">Watch Trailer</button>
+    </div>
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=80" alt="Pour Tor Metie">
+      <h4>Pour Tor Metie</h4>
+      <button class="btn btn-blue">Get Subscription</button>
     </div>
   </div>
-</section>
 
-<section id="services">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>What We Offer</h2>
-      <p>Everything you need for your digital entertainment.</p>
+  <!-- Gaming Section with Images -->
+  <h2 class="section-title">🎮 Gaming Section</h2>
+  <div class="items-grid">
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" alt="PUBG Mobile">
+      <h4>PUBG Mobile</h4>
+      <button class="btn btn-blue">View Packages</button>
     </div>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-icon">🎬</div>
-        <h3>Movies & TV</h3>
-        <p>
-          Digital entertainment options for your favorite
-          movies and television content.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🎮</div>
-        <h3>Gaming</h3>
-        <p>
-          Gaming products, top-ups and digital gaming
-          services for your favorite platforms.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🎁</div>
-        <h3>Gift Cards</h3>
-        <p>
-          Digital gift cards and entertainment cards
-          for yourself or someone special.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>Digital Services</h3>
-        <p>
-          Convenient digital services designed to make
-          your entertainment experience easier.
-        </p>
-      </div>
-
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1589241062272-c0a000072dfa?auto=format&fit=crop&w=400&q=80" alt="Fortnite">
+      <h4>Fortnite</h4>
+      <button class="btn btn-blue">View Packages</button>
+    </div>
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=400&q=80" alt="Roblox">
+      <h4>Roblox</h4>
+      <button class="btn btn-blue">View Packages</button>
+    </div>
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80" alt="Xbox">
+      <h4>Xbox</h4>
+      <button class="btn btn-blue">View Packages</button>
+    </div>
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Steam">
+      <h4>Steam</h4>
+      <button class="btn btn-blue">View Packages</button>
     </div>
   </div>
-</section>
 
-<section class="products" id="entertainment">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Featured</h2>
-      <p>Explore some of our digital entertainment options.</p>
+  <!-- Gift Cards Section with Images & Dropdowns -->
+  <h2 class="section-title">💳 Gift Cards</h2>
+  <div class="items-grid">
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=400&q=80" alt="Roblox Card">
+      <h4>Roblox Card</h4>
+      <p style="color:var(--accent-blue); font-weight:bold;">$100</p>
+      <select><option>Select Package</option></select>
+      <button class="btn btn-blue">Add to Cart</button>
     </div>
-
-    <div class="product-grid">
-
-      <div class="product">
-        <div class="product-top">🎬</div>
-        <div class="product-body">
-          <h3>Entertainment Access</h3>
-          <p>Choose from flexible digital entertainment access options.</p>
-          <div class="price">From $5</div>
-          <a href="#contact" class="product-btn">VIEW OPTIONS</a>
-        </div>
-      </div>
-
-      <div class="product" id="gaming">
-        <div class="product-top">🎮</div>
-        <div class="product-body">
-          <h3>Gaming Top-Up</h3>
-          <p>Power up your gaming experience with digital top-up options.</p>
-          <div class="price">From $5</div>
-          <a href="#contact" class="product-btn">VIEW OPTIONS</a>
-        </div>
-      </div>
-
-      <div class="product" id="giftcards">
-        <div class="product-top">🎁</div>
-        <div class="product-body">
-          <h3>Digital Gift Cards</h3>
-          <p>Digital gift cards for entertainment and gaming.</p>
-          <div class="price">From $10</div>
-          <a href="#contact" class="product-btn">VIEW OPTIONS</a>
-        </div>
-      </div>
-
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80" alt="Xbox Card">
+      <h4>Xbox Card</h4>
+      <p style="color:var(--accent-blue); font-weight:bold;">$60</p>
+      <select><option>Select Package</option></select>
+      <button class="btn btn-blue">Add to Cart</button>
+    </div>
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Steam Card">
+      <h4>Steam Card</h4>
+      <p style="color:var(--accent-green); font-weight:bold;">$200</p>
+      <select><option>Select Package</option></select>
+      <button class="btn btn-green">Add to Cart</button>
+    </div>
+    <div class="item-card">
+      <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=400&q=80" alt="Apple Card">
+      <h4>Apple Card</h4>
+      <p style="color:var(--accent-green); font-weight:bold;">$60</p>
+      <select><option>Select Package</option></select>
+      <button class="btn btn-green">Add to Cart</button>
     </div>
   </div>
-</section>
 
-<section class="deals" id="deals">
-  <div class="container">
-    <div class="deal-box">
-      <h2>🔥 DARK DEALS</h2>
-      <p>
-        Keep an eye out for special offers and limited-time
-        digital entertainment deals.
-      </p>
-      <a href="#contact" class="btn primary">GET STARTED</a>
-    </div>
+  <!-- Floating Chat Support -->
+  <div class="widget-container">
+    <div class="chat-widget">Chat with Us 💬</div>
+    <div class="whatsapp-widget">WhatsApp Support 📱</div>
   </div>
-</section>
 
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-box">
-      <div class="section-title">
-        <h2>Contact DARK</h2>
-        <p>Need help choosing a digital product?</p>
-      </div>
-
-      <p>
-        Contact us for product information, availability,
-        pricing and support.
-      </p>
-
-      <a href="mailto:darkdigital@example.com" class="btn primary">
-        CONTACT US
-      </a>
+  <!-- Footer -->
+  <footer>
+    <p><strong>DARK</strong> — Digital Entertainment • Gaming • Gift Cards • Digital Services</p>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
     </div>
-  </div>
-</section>
+  </footer>
 
-</main>
+  <!-- Canvas Motion Background Animation -->
+  <script>
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
 
-<footer>
-  <div class="logo">D<span>A</span>RK</div>
-  <p>© 2026 DARK. Digital Entertainment.</p>
-</footer>
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
 
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.radius = Math.random() * 2.5 + 1;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.alpha = Math.random() * 0.5 + 0.2;
+        this.color = Math.random() > 0.5 ? '#00e5ff' : '#00ff88';
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+    let angle = 0;
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      angle += 0.005;
+      const x1 = width * 0.3 + Math.sin(angle) * 150;
+      const y1 = height * 0.4 + Math.cos(angle * 0.8) * 100;
+      const grad1 = ctx.createRadialGradient(x1, y1, 50, x1, y1, 400);
+      grad1.addColorStop(0, 'rgba(0, 229, 255, 0.12)');
+      grad1.addColorStop(1, 'rgba(3, 7, 13, 0)');
+      ctx.fillStyle = grad1;
+      ctx.fillRect(0, 0, width, height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 </body>
 </html>

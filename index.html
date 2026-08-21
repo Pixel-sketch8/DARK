@@ -3,82 +3,652 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>DARK</title>
+<meta name="theme-color" content="#05070a">
+<title>DARK | Gaming Store</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root{
+  --bg:#05070a;
+  --card:#0b1016;
+  --card2:#101820;
+  --blue:#00aaff;
+  --blue2:#006eff;
+  --green:#00ff88;
+  --text:#f4f7fb;
+  --muted:#8c99a8;
+  --border:rgba(0,170,255,.18);
+  --shadow:0 0 30px rgba(0,170,255,.08);
 }
 
-body {
-  background: #050505;
-  color: white;
-  font-family: Arial, sans-serif;
-  text-align: center;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-header {
-  padding: 25px;
-  border-bottom: 1px solid #123;
+html{
+  scroll-behavior:smooth;
 }
 
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: 6px;
-  color: #00aaff;
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(0,110,255,.12),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(0,255,136,.07),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
 
-.hero {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
+button,
+input{
+  font:inherit;
 }
 
-.hero-content {
-  max-width: 700px;
+button{
+  cursor:pointer;
 }
 
-h1 {
-  font-size: clamp(45px, 10vw, 90px);
-  margin-bottom: 20px;
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,7,10,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
 }
 
-h1 span {
-  color: #00aaff;
+.nav{
+  width:min(1200px,92%);
+  min-height:76px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
-p {
-  color: #aaa;
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 30px;
+.logo{
+  color:white;
+  text-decoration:none;
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:1000;
+  letter-spacing:4px;
+  text-shadow:
+    0 0 8px rgba(0,170,255,.8),
+    0 0 25px rgba(0,110,255,.45);
 }
 
-button {
-  background: #00aaff;
-  color: white;
-  border: none;
-  padding: 16px 30px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
+.logo span{
+  color:var(--blue);
 }
 
-button:hover {
-  box-shadow: 0 0 25px #00aaff;
+nav{
+  display:flex;
+  align-items:center;
+  gap:22px;
 }
 
-.status {
-  margin-top: 30px;
-  color: #00ff88;
-  font-weight: bold;
+nav a{
+  color:#cbd5df;
+  text-decoration:none;
+  font-size:.92rem;
+  font-weight:700;
+  transition:.2s;
+}
+
+nav a:hover{
+  color:var(--blue);
+}
+
+.nav-actions{
+  display:flex;
+  gap:9px;
+}
+
+.icon-btn{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0a0f14;
+  color:white;
+  display:grid;
+  place-items:center;
+  font-size:1.05rem;
+}
+
+.icon-btn:hover{
+  border-color:var(--blue);
+  box-shadow:0 0 18px rgba(0,170,255,.18);
+}
+
+.menu{
+  display:none;
+}
+
+/* HERO */
+
+.hero{
+  width:min(1200px,92%);
+  min-height:470px;
+  margin:auto;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:80px 0 60px;
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:rgba(0,110,255,.12);
+  filter:blur(80px);
+  z-index:-1;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border:1px solid rgba(0,255,136,.25);
+  border-radius:999px;
+  color:var(--green);
+  background:rgba(0,255,136,.05);
+  font-size:.8rem;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+.badge i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 12px var(--green);
+}
+
+.hero h1{
+  font-size:clamp(2.6rem,8vw,6rem);
+  line-height:.95;
+  letter-spacing:-3px;
+  font-weight:1000;
+  margin-bottom:22px;
+}
+
+.hero h1 span{
+  color:var(--blue);
+  text-shadow:0 0 25px rgba(0,170,255,.5);
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+  font-size:clamp(.95rem,2vw,1.1rem);
+  line-height:1.7;
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:14px 22px;
+  font-weight:900;
+  transition:.2s;
+}
+
+.btn-primary{
+  color:white;
+  background:linear-gradient(135deg,var(--blue2),var(--blue));
+  box-shadow:0 0 25px rgba(0,110,255,.22);
+}
+
+.btn-secondary{
+  color:white;
+  background:#0c1218;
+  border:1px solid var(--border);
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+/* SEARCH */
+
+.search-wrap{
+  width:min(850px,92%);
+  margin:0 auto 50px;
+  position:relative;
+}
+
+.search{
+  width:100%;
+  padding:17px 20px 17px 48px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  outline:none;
+  background:#090e13;
+  color:white;
+  box-shadow:var(--shadow);
+}
+
+.search:focus{
+  border-color:var(--blue);
+}
+
+.search-icon{
+  position:absolute;
+  left:17px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+/* MAIN */
+
+.container{
+  width:min(1200px,92%);
+  margin:auto;
+}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  margin-bottom:22px;
+}
+
+.section-heading h2{
+  font-size:clamp(1.5rem,4vw,2.1rem);
+}
+
+.section-heading p{
+  color:var(--muted);
+  margin-top:7px;
+  font-size:.9rem;
+}
+
+/* GAME FILTERS */
+
+.filters{
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  margin-bottom:28px;
+}
+
+.filters::-webkit-scrollbar{
+  height:3px;
+}
+
+.filter{
+  flex:0 0 auto;
+  padding:10px 15px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#090e13;
+  color:#b8c2cc;
+  font-weight:800;
+}
+
+.filter.active,
+.filter:hover{
+  color:white;
+  border-color:var(--blue);
+  background:rgba(0,170,255,.1);
+}
+
+/* PRODUCT GRID */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.card{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.025),transparent),
+    var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:var(--shadow);
+  transition:.25s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:rgba(0,170,255,.08);
+  filter:blur(40px);
+  right:-50px;
+  top:-50px;
+  pointer-events:none;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(0,170,255,.45);
+  box-shadow:0 10px 35px rgba(0,170,255,.12);
+}
+
+.game-icon{
+  height:105px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-size:2.5rem;
+  background:linear-gradient(145deg,#111a23,#080d12);
+  border:1px solid rgba(255,255,255,.05);
+  margin-bottom:17px;
+}
+
+.game-name{
+  font-size:1.05rem;
+  font-weight:900;
+}
+
+.game-type{
+  color:var(--muted);
+  font-size:.8rem;
+  margin-top:5px;
+  margin-bottom:15px;
+}
+
+.price{
+  font-size:1.3rem;
+  font-weight:1000;
+}
+
+.currency{
+  color:var(--green);
+  font-size:.72rem;
+  margin-top:3px;
+}
+
+.add{
+  width:100%;
+  margin-top:15px;
+  padding:11px;
+  border:1px solid rgba(0,170,255,.3);
+  border-radius:10px;
+  background:rgba(0,170,255,.08);
+  color:#dff5ff;
+  font-weight:900;
+}
+
+.add:hover{
+  background:var(--blue);
+  color:white;
+}
+
+/* GAME SECTIONS */
+
+.game-section{
+  margin-top:65px;
+}
+
+.game-section.hidden{
+  display:none;
+}
+
+.game-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.game-title .dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--blue);
+  box-shadow:0 0 15px var(--blue);
+}
+
+/* DEALS */
+
+.deal{
+  margin-top:70px;
+  border:1px solid rgba(0,255,136,.18);
+  background:linear-gradient(120deg,rgba(0,255,136,.05),rgba(0,110,255,.05));
+  border-radius:20px;
+  padding:35px;
+  text-align:center;
+}
+
+.deal h2{
+  font-size:clamp(1.6rem,4vw,2.5rem);
+}
+
+.deal p{
+  color:var(--muted);
+  margin:10px auto 20px;
+  max-width:600px;
+  line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:80px;
+  border-top:1px solid var(--border);
+  padding:40px 0;
+}
+
+.footer{
+  width:min(1200px,92%);
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.footer p{
+  color:var(--muted);
+  font-size:.85rem;
+  line-height:1.6;
+}
+
+.footer-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.footer-links a{
+  color:#9da9b5;
+  text-decoration:none;
+  font-size:.85rem;
+}
+
+.footer-links a:hover{
+  color:var(--blue);
+}
+
+/* CART */
+
+.cart-panel{
+  position:fixed;
+  top:0;
+  right:-420px;
+  width:min(390px,92vw);
+  height:100vh;
+  background:#080d12;
+  border-left:1px solid var(--border);
+  z-index:2000;
+  padding:25px;
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-panel.open{
+  right:0;
+}
+
+.cart-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border);
+}
+
+.cart-items{
+  flex:1;
+  overflow-y:auto;
+  padding:15px 0;
+}
+
+.cart-item{
+  padding:13px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.cart-item strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.cart-item small{
+  color:var(--muted);
+}
+
+.remove{
+  float:right;
+  border:0;
+  background:none;
+  color:#ff6577;
+}
+
+.cart-total{
+  border-top:1px solid var(--border);
+  padding-top:18px;
+  font-size:1.25rem;
+  font-weight:1000;
+}
+
+.empty{
+  color:var(--muted);
+  text-align:center;
+  padding:35px 10px;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+  .products{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  nav{
+    gap:14px;
+  }
+}
+
+@media(max-width:760px){
+  .nav{
+    min-height:68px;
+  }
+
+  nav{
+    display:none;
+    position:absolute;
+    top:68px;
+    left:0;
+    width:100%;
+    padding:20px;
+    background:#070b0f;
+    border-bottom:1px solid var(--border);
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  nav.open{
+    display:flex;
+  }
+
+  .menu{
+    display:grid;
+  }
+
+  .hero{
+    min-height:420px;
+    padding:60px 0 45px;
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer{
+    flex-direction:column;
+  }
+}
+
+@media(max-width:450px){
+  .nav{
+    width:94%;
+  }
+
+  .logo{
+    font-size:1.65rem;
+    letter-spacing:3px;
+  }
+
+  .hero{
+    width:94%;
+  }
+
+  .container,
+  .search-wrap{
+    width:94%;
+  }
+
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:17px;
+  }
+
+  .game-icon{
+    height:90px;
+  }
+
+  .deal{
+    padding:25px 17px;
+  }
 }
 </style>
 </head>
@@ -86,146 +656,581 @@ button:hover {
 <body>
 
 <header>
-  <div class="logo">DARK</div>
-</header>
+  <div class="nav">
 
-<section class="hero">
+    <a href="#" class="logo">D<span>A</span>RK</a>
 
-  <div class="hero-content">
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#gaming">Gaming</a>
+      <a href="#deals">Deals</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-    <h1>WELCOME TO <span>DARK</span></h1>
-
-    <p>
-      Gaming top-ups, digital products,
-      gift cards and digital services.
-    </p>
-
-    <button onclick="alert('DARK is working!')">
-      ENTER DARK
-    </button>
-
-    <div class="status">
-      ● WEBSITE ONLINE
+    <div class="nav-actions">
+      <button class="icon-btn menu" onclick="toggleMenu()">☰</button>
+      <button class="icon-btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
     </div>
 
   </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div>
+    <div class="badge">
+      <i></i>
+      DIGITAL GAMING STORE
+    </div>
+
+    <h1>LEVEL UP<br><span>WITH DARK.</span></h1>
+
+    <p>
+      Your destination for fast and affordable gaming top-ups.
+      Choose your game, select your package and get ready to play.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#gaming" class="btn btn-primary">Shop Gaming</a>
+      <a href="#deals" class="btn btn-secondary">View Deals</a>
+    </div>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <span class="search-icon">🔎</span>
+  <input
+    class="search"
+    id="search"
+    type="search"
+    placeholder="Search Roblox, PUBG, Free Fire, COD Mobile..."
+    oninput="searchProducts()"
+  >
+</div>
+
+<section class="container" id="gaming">
+
+  <div class="section-heading">
+    <div>
+      <h2>Gaming Top-Ups</h2>
+      <p>Choose your game and select your package.</p>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" onclick="filterGame('all',this)">All</button>
+    <button class="filter" onclick="filterGame('roblox',this)">Roblox</button>
+    <button class="filter" onclick="filterGame('freefire',this)">Free Fire</button>
+    <button class="filter" onclick="filterGame('cod',this)">COD Mobile</button>
+    <button class="filter" onclick="filterGame('pubg',this)">PUBG Mobile</button>
+  </div>
+
+  <!-- ROBLOX -->
+
+  <section class="game-section" data-game="roblox">
+    <div class="game-title">
+      <span class="dot"></span>
+      <h2>Roblox — Robux</h2>
+    </div>
+
+    <div class="products">
+
+      <div class="card">
+        <div class="game-icon">🟥</div>
+        <div class="game-name">40 Robux</div>
+        <div class="game-type">Roblox</div>
+        <div class="price">$300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Roblox — 40 Robux',300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🟥</div>
+        <div class="game-name">80 Robux</div>
+        <div class="game-type">Roblox</div>
+        <div class="price">$600</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Roblox — 80 Robux',600)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🟥</div>
+        <div class="game-name">500 Robux</div>
+        <div class="game-type">Roblox</div>
+        <div class="price">$1,300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Roblox — 500 Robux',1300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🟥</div>
+        <div class="game-name">1,000 Robux</div>
+        <div class="game-type">Roblox</div>
+        <div class="price">$2,300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Roblox — 1,000 Robux',2300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🟥</div>
+        <div class="game-name">2,000 Robux</div>
+        <div class="game-type">Roblox</div>
+        <div class="price">$4,600</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Roblox — 2,000 Robux',4600)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🟥</div>
+        <div class="game-name">4,500 Robux</div>
+        <div class="game-type">Roblox</div>
+        <div class="price">$11,300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Roblox — 4,500 Robux',11300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🟥</div>
+        <div class="game-name">10,000 Robux</div>
+        <div class="game-type">Roblox</div>
+        <div class="price">$21,500</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Roblox — 10,000 Robux',21500)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🟥</div>
+        <div class="game-name">22,500 Robux</div>
+        <div class="game-type">Roblox</div>
+        <div class="price">$43,000</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Roblox — 22,500 Robux',43000)">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FREE FIRE -->
+
+  <section class="game-section" data-game="freefire">
+    <div class="game-title">
+      <span class="dot"></span>
+      <h2>Free Fire — Diamonds</h2>
+    </div>
+
+    <div class="products">
+
+      <div class="card">
+        <div class="game-icon">🔥</div>
+        <div class="game-name">100 Diamonds</div>
+        <div class="game-type">Free Fire</div>
+        <div class="price">$300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Free Fire — 100 Diamonds',300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔥</div>
+        <div class="game-name">210 Diamonds</div>
+        <div class="game-type">Free Fire</div>
+        <div class="price">$600</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Free Fire — 210 Diamonds',600)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔥</div>
+        <div class="game-name">530 Diamonds</div>
+        <div class="game-type">Free Fire</div>
+        <div class="price">$1,300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Free Fire — 530 Diamonds',1300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔥</div>
+        <div class="game-name">1,080 Diamonds</div>
+        <div class="game-type">Free Fire</div>
+        <div class="price">$2,500</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Free Fire — 1,080 Diamonds',2500)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔥</div>
+        <div class="game-name">2,200 Diamonds</div>
+        <div class="game-type">Free Fire</div>
+        <div class="price">$5,200</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('Free Fire — 2,200 Diamonds',5200)">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COD -->
+
+  <section class="game-section" data-game="cod">
+    <div class="game-title">
+      <span class="dot"></span>
+      <h2>COD Mobile — CP</h2>
+    </div>
+
+    <div class="products">
+
+      <div class="card">
+        <div class="game-icon">🎯</div>
+        <div class="game-name">80 CP</div>
+        <div class="game-type">COD Mobile</div>
+        <div class="price">$400</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('COD Mobile — 80 CP',400)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🎯</div>
+        <div class="game-name">420 CP</div>
+        <div class="game-type">COD Mobile</div>
+        <div class="price">$1,300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('COD Mobile — 420 CP',1300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🎯</div>
+        <div class="game-name">880 CP</div>
+        <div class="game-type">COD Mobile</div>
+        <div class="price">$2,300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('COD Mobile — 880 CP',2300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🎯</div>
+        <div class="game-name">2,400 CP</div>
+        <div class="game-type">COD Mobile</div>
+        <div class="price">$5,500</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('COD Mobile — 2,400 CP',5500)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🎯</div>
+        <div class="game-name">5,000 CP</div>
+        <div class="game-type">COD Mobile</div>
+        <div class="price">$11,000</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('COD Mobile — 5,000 CP',11000)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🎯</div>
+        <div class="game-name">10,800 CP</div>
+        <div class="game-type">COD Mobile</div>
+        <div class="price">$21,500</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('COD Mobile — 10,800 CP',21500)">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PUBG -->
+
+  <section class="game-section" data-game="pubg">
+    <div class="game-title">
+      <span class="dot"></span>
+      <h2>PUBG Mobile — UC</h2>
+    </div>
+
+    <div class="products">
+
+      <div class="card">
+        <div class="game-icon">🔫</div>
+        <div class="game-name">60 UC</div>
+        <div class="game-type">PUBG Mobile</div>
+        <div class="price">$300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('PUBG Mobile — 60 UC',300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔫</div>
+        <div class="game-name">325 UC</div>
+        <div class="game-type">PUBG Mobile</div>
+        <div class="price">$1,300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('PUBG Mobile — 325 UC',1300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔫</div>
+        <div class="game-name">660 UC</div>
+        <div class="game-type">PUBG Mobile</div>
+        <div class="price">$2,300</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('PUBG Mobile — 660 UC',2300)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔫</div>
+        <div class="game-name">1,800 UC</div>
+        <div class="game-type">PUBG Mobile</div>
+        <div class="price">$5,500</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('PUBG Mobile — 1,800 UC',5500)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔫</div>
+        <div class="game-name">3,850 UC</div>
+        <div class="game-type">PUBG Mobile</div>
+        <div class="price">$11,400</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('PUBG Mobile — 3,850 UC',11400)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <div class="game-icon">🔫</div>
+        <div class="game-name">8,100 UC</div>
+        <div class="game-type">PUBG Mobile</div>
+        <div class="price">$21,500</div>
+        <div class="currency">GYD</div>
+        <button class="add" onclick="addCart('PUBG Mobile — 8,100 UC',21500)">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="deal" id="deals">
+    <h2>🔥 DARK DEALS</h2>
+    <p>
+      New gaming packages and special offers can be added here as DARK grows.
+      Check back regularly for new deals.
+    </p>
+    <a href="#gaming" class="btn btn-primary">Shop Now</a>
+  </section>
 
 </section>
 
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</main>
 
-<title>DARK</title>
+<footer id="contact">
+  <div class="footer">
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    <div>
+      <div class="logo">D<span>A</span>RK</div>
+      <p>Gaming top-ups made simple.</p>
+      <p>© 2026 DARK. All rights reserved.</p>
+    </div>
 
-body {
-  background: #050505;
-  color: white;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-header {
-  padding: 25px;
-  border-bottom: 1px solid #123;
-}
-
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: 6px;
-  color: #00aaff;
-}
-
-.hero {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-}
-
-.hero-content {
-  max-width: 700px;
-}
-
-h1 {
-  font-size: clamp(45px, 10vw, 90px);
-  margin-bottom: 20px;
-}
-
-h1 span {
-  color: #00aaff;
-}
-
-p {
-  color: #aaa;
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-button {
-  background: #00aaff;
-  color: white;
-  border: none;
-  padding: 16px 30px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  box-shadow: 0 0 25px #00aaff;
-}
-
-.status {
-  margin-top: 30px;
-  color: #00ff88;
-  font-weight: bold;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">DARK</div>
-</header>
-
-<section class="hero">
-
-  <div class="hero-content">
-
-    <h1>WELCOME TO <span>DARK</span></h1>
-
-    <p>
-      Gaming top-ups, digital products,
-      gift cards and digital services.
-    </p>
-
-    <button onclick="alert('DARK is working!')">
-      ENTER DARK
-    </button>
-
-    <div class="status">
-      ● WEBSITE ONLINE
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#gaming">Gaming</a>
+      <a href="#deals">Deals</a>
+      <a href="#contact">Contact</a>
     </div>
 
   </div>
+</footer>
 
-</section>
+<!-- CART -->
+
+<aside class="cart-panel" id="cartPanel">
+
+  <div class="cart-head">
+    <h2>Your Cart</h2>
+    <button class="icon-btn" onclick="closeCart()">✕</button>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <div class="empty">Your cart is empty.</div>
+  </div>
+
+  <div class="cart-total">
+    Total: $<span id="cartTotal">0</span> GYD
+  </div>
+
+  <button class="btn btn-primary" style="margin-top:15px" onclick="checkout()">
+    Order Now
+  </button>
+
+</aside>
+
+<script>
+
+let cart = [];
+
+function addCart(name,price){
+
+  cart.push({
+    name:name,
+    price:price
+  });
+
+  updateCart();
+
+  openCart();
+}
+
+function updateCart(){
+
+  const items=document.getElementById("cartItems");
+  const count=document.getElementById("cartCount");
+  const total=document.getElementById("cartTotal");
+
+  count.textContent=cart.length;
+
+  if(cart.length===0){
+
+    items.innerHTML='<div class="empty">Your cart is empty.</div>';
+    total.textContent="0";
+    return;
+  }
+
+  let totalPrice=0;
+
+  items.innerHTML="";
+
+  cart.forEach((item,index)=>{
+
+    totalPrice+=item.price;
+
+    const div=document.createElement("div");
+
+    div.className="cart-item";
+
+    div.innerHTML=`
+      <button class="remove" onclick="removeItem(${index})">✕</button>
+      <strong>${item.name}</strong>
+      <small>$${item.price.toLocaleString()} GYD</small>
+    `;
+
+    items.appendChild(div);
+
+  });
+
+  total.textContent=totalPrice.toLocaleString();
+}
+
+function removeItem(index){
+
+  cart.splice(index,1);
+
+  updateCart();
+}
+
+function openCart(){
+
+  document.getElementById("cartPanel").classList.add("open");
+}
+
+function closeCart(){
+
+  document.getElementById("cartPanel").classList.remove("open");
+}
+
+function toggleMenu(){
+
+  document.getElementById("nav").classList.toggle("open");
+}
+
+function filterGame(game,button){
+
+  document.querySelectorAll(".filter").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  document.querySelectorAll(".game-section").forEach(section=>{
+
+    if(game==="all" || section.dataset.game===game){
+      section.classList.remove("hidden");
+    }else{
+      section.classList.add("hidden");
+    }
+
+  });
+}
+
+function searchProducts(){
+
+  const query=document.getElementById("search").value.toLowerCase().trim();
+
+  document.querySelectorAll(".game-section").forEach(section=>{
+
+    let found=false;
+
+    section.querySelectorAll(".card").forEach(card=>{
+
+      const text=card.innerText.toLowerCase();
+
+      if(text.includes(query)){
+        card.style.display="";
+        found=true;
+      }else{
+        card.style.display="none";
+      }
+
+    });
+
+    if(query===""){
+      section.classList.remove("hidden");
+    }else{
+      section.classList.toggle("hidden",!found);
+    }
+
+  });
+
+}
+
+function checkout(){
+
+  if(cart.length===0){
+
+    alert("Your cart is empty.");
+    return;
+  }
+
+  let message="Hello DARK! I would like to order:%0A%0A";
+
+  cart.forEach(item=>{
+    message += "• " + item.name + " — $" +
+      item.price.toLocaleString() + " GYD%0A";
+  });
+
+  let total=cart.reduce((sum,item)=>sum+item.price,0);
+
+  message += "%0ATotal: $" +
+    total.toLocaleString() +
+    " GYD";
+
+  /*
+    Replace YOUR_NUMBER below with your
+    DARK WhatsApp business number.
+  */
+
+  const phone="YOUR_NUMBER";
+
+  if(phone==="YOUR_NUMBER"){
+
+    alert(
+      "Your cart is ready!\\n\\n" +
+      "Before going live, replace YOUR_NUMBER in the code with your DARK WhatsApp number."
+    );
+
+    return;
+  }
+
+  window.open(
+    "https://wa.me/"+phone+"?text="+message,
+    "_blank"
+  );
+}
+
+</script>
 
 </body>
-</html>
+          </html>

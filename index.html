@@ -1,1 +1,273 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARK | Digital Entertainment</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #05070b;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(5, 7, 11, 0.95);
+      border-bottom: 1px solid #12345a;
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: #fff;
+      text-shadow: 0 0 15px #008cff;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00aaff;
+      text-shadow: 0 0 10px #008cff;
+    }
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        radial-gradient(circle at center, #09233d 0%, #05070b 55%, #020305 100%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 10vw, 100px);
+      letter-spacing: 12px;
+      margin-bottom: 15px;
+      text-shadow:
+        0 0 10px #008cff,
+        0 0 30px #005eff;
+    }
+
+    .hero p {
+      color: #b8c4d0;
+      font-size: 19px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      border: 1px solid #008cff;
+      border-radius: 6px;
+      color: #fff;
+      text-decoration: none;
+      background: #071522;
+      box-shadow: 0 0 15px rgba(0, 140, 255, 0.35);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #008cff;
+      box-shadow: 0 0 25px #008cff;
+    }
+
+    section {
+      padding: 70px 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-shadow: 0 0 12px #008cff;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #0a1018, #05080d);
+      border: 1px solid #123b61;
+      border-radius: 12px;
+      padding: 30px 22px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #008cff;
+      box-shadow: 0 0 25px rgba(0, 140, 255, 0.25);
+    }
+
+    .card h3 {
+      color: #00aaff;
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #aab5c0;
+      line-height: 1.5;
+    }
+
+    footer {
+      border-top: 1px solid #12345a;
+      text-align: center;
+      padding: 30px 20px;
+      color: #718096;
+      background: #030509;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 15px 5%;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      .hero h1 {
+        letter-spacing: 6px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 50px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">DARK</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#entertainment">Movies & TV</a>
+      <a href="#gaming">Gaming</a>
+      <a href="#giftcards">Gift Cards</a>
+      <a href="#services">Services</a>
+      <a href="#deals">Deals</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>DARK</h1>
+
+        <p>
+          Your digital entertainment hub for streaming,
+          gaming, gift cards and digital services.
+        </p>
+
+        <a href="#services" class="btn">Explore DARK</a>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 class="section-title">What We Offer</h2>
+
+      <div class="services">
+
+        <div class="card" id="entertainment">
+          <h3>Movies & TV</h3>
+          <p>
+            Access entertainment options with flexible
+            digital plans.
+          </p>
+        </div>
+
+        <div class="card" id="gaming">
+          <h3>Gaming</h3>
+          <p>
+            Gaming products, top-ups and digital gaming
+            options.
+          </p>
+        </div>
+
+        <div class="card" id="giftcards">
+          <h3>Gift Cards</h3>
+          <p>
+            Digital gift cards for your favorite platforms
+            and services.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Digital Services</h3>
+          <p>
+            Convenient digital products and services
+            available through DARK.
+          </p>
+        </div>
+
+        <div class="card" id="deals">
+          <h3>Deals</h3>
+          <p>
+            Discover special offers and selected digital
+            deals.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <p>© 2026 DARK. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

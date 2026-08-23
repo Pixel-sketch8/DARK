@@ -3,2009 +3,1306 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>DARK — Gaming Store</title>
+<title>DARK | Gaming Store</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#020408;
-  color:#fff;
-  overflow-x:hidden;
+font-family:Arial,Helvetica,sans-serif;
+background:#050000;
+color:#fff;
+overflow-x:hidden
 }
 
-/* ================= BACKGROUND ================= */
-
-#bg{
-  position:fixed;
-  inset:0;
-  z-index:-10;
-  overflow:hidden;
-  background:#020408;
+/* ===== MOVING RED BACKGROUND ===== */
+#background{
+position:fixed;
+inset:0;
+z-index:-5;
+overflow:hidden;
+background:#050000
 }
-
-.bg-image{
-  position:absolute;
-  inset:-8%;
-  width:116%;
-  height:116%;
-  object-fit:cover;
-  opacity:.62;
-  animation:bgMove 18s ease-in-out infinite alternate;
+#background img{
+position:absolute;
+width:115%;
+height:115%;
+left:-7%;
+top:-7%;
+object-fit:cover;
+opacity:.48;
+animation:bgMove 18s ease-in-out infinite alternate
 }
-
-.bg-overlay{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.35),
-      rgba(0,0,0,.72) 60%,
-      #020408 100%
-    );
+.overlay{
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 50% 20%,rgba(255,0,0,.18),transparent 45%),
+linear-gradient(180deg,rgba(0,0,0,.35),#050000 90%)
 }
-
-.neon-glow{
-  position:absolute;
-  width:450px;
-  height:450px;
-  border-radius:50%;
-  background:rgba(0,140,255,.12);
-  filter:blur(80px);
-  animation:glowMove 10s ease-in-out infinite alternate;
+.redGlow{
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+background:rgba(255,0,0,.13);
+filter:blur(100px);
+animation:glow 8s ease-in-out infinite alternate
 }
-
-.neon-glow.one{
-  top:5%;
-  left:-10%;
-}
-
-.neon-glow.two{
-  right:-10%;
-  bottom:10%;
-  background:rgba(0,255,140,.08);
-  animation-delay:3s;
-}
-
-#particles{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-}
+.redGlow.one{left:-180px;top:10%}
+.redGlow.two{right:-180px;bottom:5%;animation-delay:2s}
 
 @keyframes bgMove{
-  from{
-    transform:scale(1) translate3d(0,0,0);
-  }
-  to{
-    transform:scale(1.08) translate3d(-1.5%,-1%,0);
-  }
+from{transform:scale(1) translate(0,0)}
+to{transform:scale(1.08) translate(-1.5%,-1%)}
+}
+@keyframes glow{
+from{transform:scale(.8)}
+to{transform:scale(1.35) translate(100px,40px)}
 }
 
-@keyframes glowMove{
-  from{
-    transform:translate(0,0) scale(1);
-  }
-  to{
-    transform:translate(180px,70px) scale(1.3);
-  }
+/* ===== PARTICLES ===== */
+#particles{
+position:absolute;
+inset:0;
+width:100%;
+height:100%
 }
 
-/* ================= HEADER ================= */
-
+/* ===== HEADER ===== */
 header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1000;
-  background:rgba(2,5,9,.72);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(0,174,255,.15);
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:1000;
+background:rgba(5,0,0,.78);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,0,0,.2)
 }
-
 .nav{
-  width:min(1200px,92%);
-  height:76px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+height:75px;
+width:min(1200px,92%);
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between
 }
-
 .logo{
-  width:125px;
-  height:62px;
-  object-fit:contain;
-  filter:
-    drop-shadow(0 0 10px rgba(0,160,255,.8))
-    drop-shadow(0 0 25px rgba(0,160,255,.35));
+width:125px;
+height:62px;
+object-fit:contain;
+filter:drop-shadow(0 0 13px rgba(255,0,0,.8))
 }
-
-nav{
-  display:flex;
-  gap:25px;
-  align-items:center;
-}
-
+nav{display:flex;gap:24px}
 nav a{
-  color:#aeb9c6;
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:1.5px;
-  text-decoration:none;
-  transition:.25s;
+color:#bbb;
+text-decoration:none;
+font-size:11px;
+font-weight:900;
+letter-spacing:1.5px
 }
-
 nav a:hover{
-  color:#00b7ff;
-  text-shadow:0 0 15px #008cff;
+color:#ff2020;
+text-shadow:0 0 15px red
 }
-
 .menu{
-  display:none;
-  border:1px solid rgba(0,170,255,.3);
-  background:rgba(0,0,0,.4);
-  color:white;
-  padding:10px 13px;
-  border-radius:10px;
-  font-size:20px;
+display:none;
+background:none;
+border:1px solid #ff2020;
+color:#fff;
+border-radius:9px;
+font-size:20px;
+padding:8px 12px
 }
 
-/* ================= GENERAL ================= */
-
-section{
-  padding:105px 0;
-}
-
-.wrap{
-  width:min(1200px,92%);
-  margin:auto;
-}
-
+/* ===== GENERAL ===== */
+section{padding:105px 0}
+.wrap{width:min(1200px,92%);margin:auto}
 .tag{
-  color:#00b7ff;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:3px;
-  margin-bottom:12px;
+color:#ff2525;
+font-size:11px;
+font-weight:900;
+letter-spacing:3px;
+margin-bottom:12px
 }
-
 h2{
-  font-size:clamp(35px,5vw,62px);
-  line-height:1;
-  margin-bottom:14px;
+font-size:clamp(35px,5vw,62px);
+line-height:1;
+margin-bottom:15px
 }
-
 .desc{
-  color:#8996a5;
-  line-height:1.7;
-  max-width:650px;
-  margin-bottom:35px;
+color:#999;
+line-height:1.7;
+max-width:650px;
+margin-bottom:30px
 }
-
 .btn{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  padding:15px 22px;
-  border-radius:12px;
-  border:0;
-  font-weight:900;
-  cursor:pointer;
-  text-decoration:none;
-  transition:.25s;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:15px 23px;
+border-radius:10px;
+font-weight:900;
+cursor:pointer;
+border:0;
+text-decoration:none;
+transition:.25s
+}
+.red{
+background:linear-gradient(135deg,#ff1010,#900000);
+color:#fff;
+box-shadow:0 0 28px rgba(255,0,0,.25)
+}
+.red:hover{
+transform:translateY(-3px);
+box-shadow:0 0 45px rgba(255,0,0,.55)
+}
+.darkBtn{
+background:rgba(255,255,255,.05);
+color:#fff;
+border:1px solid rgba(255,255,255,.15)
 }
 
-.primary{
-  background:linear-gradient(135deg,#00aaff,#00e5ff);
-  color:#001018;
-  box-shadow:0 0 28px rgba(0,170,255,.25);
+/* ===== ENTER SCREEN ===== */
+#enterScreen{
+position:fixed;
+inset:0;
+z-index:5000;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:#030000;
+transition:opacity .6s,visibility .6s
+}
+#enterScreen.hide{
+opacity:0;
+visibility:hidden;
+pointer-events:none
+}
+.enterBox{width:min(700px,90%)}
+.enterLogo{
+width:min(400px,80%);
+filter:drop-shadow(0 0 25px red);
+animation:float 4s ease-in-out infinite
+}
+@keyframes float{
+50%{transform:translateY(-12px)}
+}
+.enterBox h1{
+font-size:clamp(45px,8vw,85px);
+letter-spacing:-4px;
+margin:20px 0 10px
+}
+.enterBox h1 span{color:#ff1515}
+.enterBox p{
+color:#888;
+margin-bottom:28px;
+line-height:1.6
 }
 
-.primary:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 45px rgba(0,170,255,.5);
+/* ===== TOP BANNER ===== */
+.topBanner{
+padding:135px 20px 35px;
+text-align:center
+}
+.topBanner h1{
+font-size:clamp(38px,6vw,75px);
+letter-spacing:-3px
+}
+.topBanner h1 span{
+color:#ff1515;
+text-shadow:0 0 25px rgba(255,0,0,.5)
+}
+.topBanner p{
+color:#999;
+margin:15px auto;
+max-width:650px
+}
+.ticker{
+margin:25px auto 0;
+padding:11px;
+border-top:1px solid rgba(255,0,0,.25);
+border-bottom:1px solid rgba(255,0,0,.25);
+color:#ff5555;
+font-size:11px;
+font-weight:bold;
+letter-spacing:1px
 }
 
-.secondary{
-  color:white;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.15);
-}
-
-/* ================= WELCOME ================= */
-
-.welcome{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:110px 20px 60px;
-}
-
-.welcome-inner{
-  width:min(900px,100%);
-}
-
-.welcome-logo{
-  width:min(420px,82%);
-  max-height:270px;
-  object-fit:contain;
-  filter:
-    drop-shadow(0 0 15px rgba(0,160,255,.8))
-    drop-shadow(0 0 50px rgba(0,120,255,.4));
-  animation:logoFloat 4s ease-in-out infinite;
-}
-
-@keyframes logoFloat{
-  0%,100%{
-    transform:translateY(0);
-  }
-  50%{
-    transform:translateY(-12px);
-  }
-}
-
-.welcome h1{
-  font-size:clamp(45px,7vw,90px);
-  margin-top:20px;
-  letter-spacing:-4px;
-}
-
-.welcome h1 span{
-  color:#00aaff;
-  text-shadow:0 0 30px #008cff;
-}
-
-.welcome p{
-  color:#9ba8b7;
-  max-width:650px;
-  margin:22px auto 30px;
-  line-height:1.7;
-}
-
-.actions{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-/* ================= GAMES ================= */
-
+/* ===== GAMES ===== */
 .games{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px
 }
-
 .game{
-  position:relative;
-  height:410px;
-  overflow:hidden;
-  border-radius:23px;
-  background:#080d13;
-  border:1px solid rgba(255,255,255,.1);
-  cursor:pointer;
-  transition:.35s;
+height:410px;
+position:relative;
+overflow:hidden;
+border-radius:20px;
+background:#0b0505;
+border:1px solid rgba(255,255,255,.1);
+cursor:pointer;
+transition:.35s
 }
-
 .game:hover{
-  transform:translateY(-9px);
-  border-color:#00aaff;
-  box-shadow:
-    0 25px 60px rgba(0,0,0,.65),
-    0 0 35px rgba(0,160,255,.2);
+transform:translateY(-8px);
+border-color:#ff2020;
+box-shadow:0 25px 55px rgba(0,0,0,.7),0 0 30px rgba(255,0,0,.2)
 }
-
 .game img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s
 }
-
-.game:hover img{
-  transform:scale(1.08);
-}
-
+.game:hover img{transform:scale(1.08)}
 .game:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    transparent 25%,
-    rgba(0,0,0,.95)
-  );
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(transparent 25%,rgba(0,0,0,.95))
+}
+.gameInfo{
+position:absolute;
+z-index:2;
+bottom:20px;
+left:20px;
+right:20px
+}
+.gameInfo small{
+color:#ff3030;
+font-size:10px;
+font-weight:900;
+letter-spacing:2px
+}
+.gameInfo h3{font-size:27px;margin:8px 0}
+.gameInfo p{font-size:13px;color:#aaa}
+
+/* ===== COMING SOON ===== */
+.comingGrid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px
+}
+.comingCard{
+height:300px;
+position:relative;
+overflow:hidden;
+border-radius:20px;
+border:1px solid rgba(255,0,0,.2);
+background:#090303
+}
+.comingCard img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s
+}
+.comingCard:hover img{transform:scale(1.08)}
+.comingCard:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(transparent 25%,rgba(0,0,0,.95))
+}
+.comingInfo{
+position:absolute;
+z-index:2;
+bottom:18px;
+left:18px
+}
+.comingInfo h3{font-size:22px}
+.comingInfo span{
+color:#ff2929;
+font-size:10px;
+font-weight:bold;
+letter-spacing:2px
 }
 
-.game-info{
-  position:absolute;
-  z-index:2;
-  left:20px;
-  right:20px;
-  bottom:20px;
-}
-
-.game-info small{
-  color:#00b7ff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.game-info h3{
-  font-size:27px;
-  margin:8px 0;
-}
-
-.game-info p{
-  color:#9ba7b5;
-  font-size:13px;
-}
-
-/* ================= COMING SOON ================= */
-
-.coming{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.coming-card{
-  padding:40px;
-  min-height:250px;
-  border-radius:25px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(0,170,255,.09),
-      rgba(0,255,150,.03)
-    );
-  border:1px solid rgba(0,170,255,.18);
-}
-
-.coming-card h3{
-  font-size:32px;
-  margin-bottom:14px;
-}
-
-.coming-card p{
-  color:#8794a3;
-  line-height:1.7;
-}
-
-/* ================= DEALS ================= */
-
+/* ===== DEALS ===== */
 .deals{
-  display:grid;
-  grid-template-columns:1.4fr .8fr;
-  gap:18px;
+display:grid;
+grid-template-columns:1.4fr .8fr;
+gap:18px
 }
-
 .deal{
-  padding:40px;
-  min-height:280px;
-  border-radius:25px;
-  background:rgba(7,12,18,.82);
-  border:1px solid rgba(0,170,255,.18);
+padding:40px;
+border-radius:22px;
+background:rgba(12,5,5,.85);
+border:1px solid rgba(255,0,0,.18);
+min-height:260px
 }
+.deal h3{font-size:34px;margin-bottom:15px}
+.deal p{color:#999;line-height:1.7;margin-bottom:25px}
 
-.deal h3{
-  font-size:34px;
-  margin-bottom:14px;
-}
-
-.deal p{
-  color:#8794a3;
-  line-height:1.7;
-  margin-bottom:25px;
-}
-
-/* ================= FEATURES ================= */
-
+/* ===== FEATURES ===== */
 .features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
 }
-
 .feature{
-  padding:30px;
-  border-radius:20px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.08);
+padding:30px;
+border-radius:18px;
+background:rgba(255,255,255,.035);
+border:1px solid rgba(255,255,255,.08)
 }
+.featureIcon{font-size:30px}
+.feature h3{margin:15px 0 9px}
+.feature p{color:#888;line-height:1.6}
 
-.feature-icon{
-  font-size:32px;
-}
-
-.feature h3{
-  margin:16px 0 10px;
-}
-
-.feature p{
-  color:#7f8c9b;
-  line-height:1.65;
-}
-
-/* ================= REWARD ================= */
-
+/* ===== REWARD ===== */
 .reward{
-  position:relative;
-  overflow:hidden;
-  text-align:center;
-  padding:60px 30px;
-  border-radius:30px;
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(0,150,255,.14),
-      rgba(5,9,14,.92) 60%
-    );
-  border:1px solid rgba(0,170,255,.25);
+text-align:center;
+padding:55px 25px;
+border-radius:25px;
+background:rgba(15,3,3,.85);
+border:1px solid rgba(255,0,0,.25)
 }
-
-.reward h2{
-  margin-bottom:15px;
+.progressWrap{
+width:min(550px,100%);
+margin:25px auto
 }
-
-.reward p{
-  color:#8e9baa;
-  max-width:650px;
-  margin:0 auto 25px;
-  line-height:1.7;
+.progressTop{
+display:flex;
+justify-content:space-between;
+color:#aaa;
+font-size:13px;
+margin-bottom:8px
 }
-
-.progress-wrap{
-  width:min(550px,100%);
-  margin:25px auto;
-}
-
-.progress-top{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:9px;
-  color:#b7c2ce;
-  font-size:13px;
-}
-
 .progress{
-  height:12px;
-  border-radius:20px;
-  background:#101720;
-  overflow:hidden;
+height:11px;
+background:#160707;
+border-radius:20px;
+overflow:hidden
+}
+.progressBar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#700000,#ff1515);
+box-shadow:0 0 15px red;
+transition:.5s
 }
 
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#008cff,#00e5ff);
-  box-shadow:0 0 18px #008cff;
-  transition:.5s;
-}
-
-/* ================= PAYMENT ================= */
-
+/* ===== PAYMENT ===== */
 .payment{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px
 }
-
-.payment-card{
-  padding:35px;
-  border-radius:25px;
-  background:rgba(7,12,18,.88);
-  border:1px solid rgba(0,170,255,.18);
+.paymentCard{
+padding:35px;
+border-radius:22px;
+background:rgba(10,4,4,.9);
+border:1px solid rgba(255,0,0,.18)
 }
-
-.payment-card h3{
-  font-size:29px;
-  margin-bottom:20px;
+.paymentCard h3{font-size:28px;margin-bottom:18px}
+.paymentRow{
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+border-bottom:1px solid rgba(255,255,255,.07)
 }
+.paymentRow span{color:#888}
 
-.payment-row{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:15px 0;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.payment-row span{
-  color:#7f8c9b;
-}
-
-/* ================= CONTACT ================= */
-
+/* ===== CONTACT ===== */
 .contact{
-  text-align:center;
-  padding:70px 30px;
-  border-radius:30px;
-  background:
-    linear-gradient(
-      rgba(2,6,10,.75),
-      rgba(2,6,10,.92)
-    ),
-    url("1787436314905.png") center/cover;
-  border:1px solid rgba(0,170,255,.2);
+text-align:center;
+padding:65px 25px;
+border-radius:25px;
+background:rgba(8,2,2,.85);
+border:1px solid rgba(255,0,0,.2)
+}
+.contact p{color:#999;margin:15px 0 25px}
+.actions{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap
 }
 
-.contact p{
-  color:#8996a5;
-  margin:15px auto 25px;
-}
-
-/* ================= FOOTER ================= */
-
+/* ===== FOOTER ===== */
 footer{
-  padding:35px 0;
-  border-top:1px solid rgba(255,255,255,.08);
+border-top:1px solid rgba(255,255,255,.08);
+padding:35px 0
 }
-
 .footer{
-  width:min(1200px,92%);
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  color:#667384;
+width:min(1200px,92%);
+margin:auto;
+display:flex;
+justify-content:space-between;
+color:#666
 }
 
-/* ================= MODAL ================= */
-
-.modal-bg{
-  position:fixed;
-  inset:0;
-  z-index:3000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  background:rgba(0,0,0,.84);
-  backdrop-filter:blur(12px);
+/* ===== MODALS ===== */
+.modalBg{
+position:fixed;
+inset:0;
+z-index:3000;
+display:none;
+align-items:center;
+justify-content:center;
+padding:15px;
+background:rgba(0,0,0,.88);
+backdrop-filter:blur(10px)
 }
-
-.modal-bg.open{
-  display:flex;
-}
-
+.modalBg.open{display:flex}
 .modal{
-  width:min(950px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:#080d13;
-  border:1px solid rgba(0,170,255,.3);
-  border-radius:25px;
-  box-shadow:0 30px 100px #000;
+width:min(900px,100%);
+max-height:92vh;
+overflow:auto;
+background:#0b0505;
+border:1px solid rgba(255,0,0,.35);
+border-radius:22px
 }
-
-.modal-grid{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
+.modalGrid{
+display:grid;
+grid-template-columns:.9fr 1.1fr
 }
-
-.modal-image{
-  min-height:500px;
+.modalImage{min-height:470px}
+.modalImage img{
+width:100%;
+height:100%;
+object-fit:cover
 }
-
-.modal-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.modal-content{
-  padding:32px;
-}
-
+.modalContent{padding:30px}
 .close{
-  float:right;
-  border:0;
-  background:none;
-  color:white;
-  font-size:30px;
-  cursor:pointer;
+float:right;
+border:0;
+background:none;
+color:#fff;
+font-size:30px;
+cursor:pointer
 }
-
-.modal-content h2{
-  margin:15px 0 8px;
-}
-
-.modal-type{
-  color:#8492a2;
-  margin-bottom:20px;
-}
-
 .package{
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px;
-  margin:8px 0;
-  border-radius:12px;
-  background:#0d141d;
-  border:1px solid rgba(255,255,255,.08);
-  color:white;
-  cursor:pointer;
-  transition:.2s;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:14px;
+margin:7px 0;
+background:#140909;
+border:1px solid rgba(255,255,255,.08);
+color:#fff;
+border-radius:10px;
+cursor:pointer
 }
-
-.package:hover,
 .package.selected{
-  border-color:#00aaff;
-  background:rgba(0,170,255,.1);
-  box-shadow:0 0 15px rgba(0,170,255,.12);
+border-color:#ff2020;
+background:rgba(255,0,0,.12)
 }
-
 .field{
-  width:100%;
-  padding:15px;
-  margin:8px 0;
-  border-radius:11px;
-  border:1px solid rgba(255,255,255,.1);
-  background:#030609;
-  color:white;
-  outline:none;
+width:100%;
+padding:14px;
+margin:7px 0;
+background:#050101;
+border:1px solid rgba(255,255,255,.12);
+border-radius:9px;
+color:#fff;
+outline:none
+}
+.label{
+display:block;
+color:#999;
+font-size:12px;
+margin-top:12px
 }
 
-.field:focus{
-  border-color:#00aaff;
+/* ===== QUANTITY ===== */
+.quantity{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin:18px 0;
+padding:12px 15px;
+background:#120707;
+border:1px solid rgba(255,0,0,.15);
+border-radius:12px
 }
-
-.form-label{
-  display:block;
-  color:#9aa6b4;
-  font-size:12px;
-  margin-top:12px;
+.quantityControls{
+display:flex;
+align-items:center;
+gap:15px
 }
-
-/* ================= REWARD MODAL ================= */
-
-.reward-modal{
-  text-align:center;
-  padding:35px;
+.quantityControls button{
+width:35px;
+height:35px;
+border-radius:8px;
+border:1px solid #ff2020;
+background:#210707;
+color:#fff;
+font-size:20px;
+cursor:pointer
 }
+#quantityValue{font-size:20px;font-weight:bold}
 
-.reward-options{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin:25px 0;
+/* ===== THANK YOU ===== */
+.thankyou{
+text-align:center;
+padding:55px 30px
 }
-
-.reward-option{
-  padding:18px;
-  border-radius:14px;
-  background:#0d141d;
-  border:1px solid rgba(255,255,255,.1);
-  color:white;
-  cursor:pointer;
+.check{
+font-size:65px;
+color:#ff2020;
+text-shadow:0 0 30px red;
+margin-bottom:15px
 }
-
-.reward-option:hover,
-.reward-option.selected{
-  border-color:#00b7ff;
-  background:rgba(0,170,255,.1);
+.orderSummary{
+margin:25px auto;
+max-width:500px;
+text-align:left;
+background:#120707;
+padding:20px;
+border-radius:15px;
+border:1px solid rgba(255,0,0,.18)
 }
-
-.reward-message{
-  display:none;
-  margin-top:20px;
-  color:#00d9ff;
-  line-height:1.6;
+.orderSummary div{
+display:flex;
+justify-content:space-between;
+padding:9px 0;
+border-bottom:1px solid rgba(255,255,255,.06)
 }
+.orderSummary span{color:#888}
 
-/* ================= TOAST ================= */
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  transform:translate(-50%,120px);
-  z-index:5000;
-  padding:15px 20px;
-  border-radius:12px;
-  background:#0b141d;
-  border:1px solid #00aaff;
-  box-shadow:0 0 30px rgba(0,170,255,.25);
-  color:white;
-  transition:.35s;
-}
-
-.toast.show{
-  transform:translate(-50%,0);
-}
-
-/* ================= MOBILE ================= */
-
+/* ===== MOBILE ===== */
 @media(max-width:950px){
-
-  .games{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .payment,
-  .deals,
-  .coming{
-    grid-template-columns:1fr;
-  }
-
-  .features{
-    grid-template-columns:1fr;
-  }
-
+.games{grid-template-columns:repeat(2,1fr)}
+.comingGrid{grid-template-columns:repeat(2,1fr)}
+.deals,.payment{grid-template-columns:1fr}
+.features{grid-template-columns:1fr}
 }
-
 @media(max-width:700px){
-
-  nav{
-    display:none;
-    position:absolute;
-    top:76px;
-    left:0;
-    right:0;
-    padding:25px;
-    flex-direction:column;
-    background:#030609;
-    border-bottom:1px solid rgba(0,170,255,.15);
-  }
-
-  nav.open{
-    display:flex;
-  }
-
-  .menu{
-    display:block;
-  }
-
-  .welcome{
-    padding-top:125px;
-  }
-
-  .welcome-logo{
-    width:300px;
-  }
-
-  .games{
-    grid-template-columns:1fr;
-  }
-
-  .game{
-    height:430px;
-  }
-
-  .modal-grid{
-    grid-template-columns:1fr;
-  }
-
-  .modal-image{
-    height:280px;
-    min-height:0;
-  }
-
-  .reward-options{
-    grid-template-columns:1fr;
-  }
-
-  .footer{
-    flex-direction:column;
-  }
-
-  section{
-    padding:80px 0;
-  }
-
+nav{
+display:none;
+position:absolute;
+top:75px;
+left:0;
+right:0;
+padding:25px;
+flex-direction:column;
+background:#080000
 }
-
-@media(prefers-reduced-motion:reduce){
-
-  .bg-image,
-  .neon-glow,
-  .welcome-logo{
-    animation:none;
-  }
-
+nav.open{display:flex}
+.menu{display:block}
+.games,.comingGrid{grid-template-columns:1fr}
+.game{height:430px}
+.modalGrid{grid-template-columns:1fr}
+.modalImage{height:260px;min-height:0}
+.footer{flex-direction:column;gap:10px}
+section{padding:80px 0}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= BACKGROUND ================= -->
-
-<div id="bg">
-
-  <img
-    class="bg-image"
-    src="1787436314905.png"
-    alt=""
-  >
-
-  <div class="bg-overlay"></div>
-
-  <div class="neon-glow one"></div>
-  <div class="neon-glow two"></div>
-
-  <canvas id="particles"></canvas>
-
+<!-- BACKGROUND -->
+<div id="background">
+<img src="1787436314905.png" alt="">
+<div class="overlay"></div>
+<div class="redGlow one"></div>
+<div class="redGlow two"></div>
+<canvas id="particles"></canvas>
 </div>
 
-<!-- ================= HEADER ================= -->
+<!-- ENTER SCREEN -->
+<div id="enterScreen">
+<div class="enterBox">
+<img class="enterLogo"
+src="1787452151160-removebg-preview.png"
+alt="DARK">
+<div class="tag">DIGITAL GAMING STORE</div>
+<h1>WELCOME TO <span>DARK</span></h1>
+<p>
+Gaming top-ups, digital deals and rewards.
+Enter the DARK Store to continue.
+</p>
+<button class="btn red" onclick="enterStore()">
+ENTER DARK STORE →
+</button>
+</div>
+</div>
 
+<!-- HEADER -->
 <header>
-
 <div class="nav">
-
 <a href="#home">
-<img
-  class="logo"
-  src="1787452151160-removebg-preview.png"
-  alt="DARK">
+<img class="logo"
+src="1787452151160-removebg-preview.png"
+alt="DARK">
 </a>
 
 <nav id="nav">
-
 <a href="#home">HOME</a>
 <a href="#gaming">GAMING</a>
 <a href="#coming">COMING SOON</a>
 <a href="#deals">DEALS</a>
 <a href="#reward">REWARDS</a>
 <a href="#contact">CONTACT</a>
-
 </nav>
 
-<button
-  class="menu"
-  onclick="toggleMenu()">
-☰
-</button>
-
+<button class="menu" onclick="toggleMenu()">☰</button>
 </div>
-
 </header>
 
-<!-- ================= HOME ================= -->
-
-<section class="welcome" id="home">
-
-<div class="welcome-inner">
-
-<img
-  class="welcome-logo"
-  src="1787452151160-removebg-preview.png"
-  alt="DARK Logo">
-
-<div class="tag">DIGITAL GAMING STORE</div>
-
-<h1>
-WELCOME TO <span>DARK</span>
-</h1>
-
+<!-- TOP -->
+<section class="topBanner" id="home">
+<div class="wrap">
+<div class="tag">DARK GAMING STORE</div>
+<h1>LEVEL UP <span>YOUR GAME</span></h1>
 <p>
-Your gaming destination for UC, CP, Diamonds,
-Robux and more. Choose your game, choose your
-package and place your order directly with DARK.
+Gaming top-ups • Gift Cards • Exclusive Deals
 </p>
 
-<div class="actions">
-
-<a href="#gaming" class="btn primary">
-ENTER DARK STORE →
-</a>
-
-<a href="#contact" class="btn secondary">
-CONTACT DARK
-</a>
-
+<div class="ticker">
+🔴 NEW DEALS DROPPING SOON • 🎮 FAST GAMING TOP-UPS • 🎁 5 PURCHASES = FREE
 </div>
-
 </div>
-
 </section>
 
-<!-- ================= GAMING ================= -->
-
+<!-- GAMING -->
 <section id="gaming">
-
 <div class="wrap">
-
 <div class="tag">DARK GAMING</div>
-
 <h2>Choose Your Game</h2>
-
 <p class="desc">
-Select a game below to see all available packages
-and place your order.
+Select a game to see packages and place your order.
 </p>
 
 <div class="games">
 
-<!-- ROBLOX -->
-
-<div
-class="game"
-onclick="openProduct(
-'Roblox',
-'Robux',
+<div class="game" onclick="openProduct(
+'Roblox','Robux',
 'images/f93f089a3d8211ede4c832c3a24efe1e.jpg',
 [
-['40 Robux','300'],
-['80 Robux','600'],
-['500 Robux','1,300'],
-['1,000 Robux','2,300'],
-['2,000 Robux','4,600'],
-['4,500 Robux','11,300'],
-['10,000 Robux','21,500'],
-['22,500 Robux','43,000']
-]
-)">
-
-<img
-src="images/f93f089a3d8211ede4c832c3a24efe1e.jpg"
-alt="Roblox">
-
-<div class="game-info">
+['40 Robux',300],['80 Robux',600],['500 Robux',1300],
+['1,000 Robux',2300],['2,000 Robux',4600],
+['4,500 Robux',11300],['10,000 Robux',21500],
+['22,500 Robux',43000]
+])">
+<img src="images/f93f089a3d8211ede4c832c3a24efe1e.jpg">
+<div class="gameInfo">
 <small>ROBLOX</small>
 <h3>Robux</h3>
-<p>Tap to view packages →</p>
+<p>View packages →</p>
+</div>
 </div>
 
-</div>
-
-<!-- FREE FIRE -->
-
-<div
-class="game"
-onclick="openProduct(
-'Free Fire',
-'Diamonds',
+<div class="game" onclick="openProduct(
+'Free Fire','Diamonds',
 'images/30de15ba0e69c62e5e5987ceaae08401.jpg',
 [
-['100 Diamonds','300'],
-['210 Diamonds','600'],
-['530 Diamonds','1,300'],
-['1,080 Diamonds','2,500'],
-['2,200 Diamonds','5,200']
-]
-)">
-
-<img
-src="images/30de15ba0e69c62e5e5987ceaae08401.jpg"
-alt="Free Fire">
-
-<div class="game-info">
+['100 Diamonds',300],['210 Diamonds',600],
+['530 Diamonds',1300],['1,080 Diamonds',2500],
+['2,200 Diamonds',5200]
+])">
+<img src="images/30de15ba0e69c62e5e5987ceaae08401.jpg">
+<div class="gameInfo">
 <small>FREE FIRE</small>
 <h3>Diamonds</h3>
-<p>Tap to view packages →</p>
+<p>View packages →</p>
+</div>
 </div>
 
-</div>
-
-<!-- CALL OF DUTY -->
-
-<div
-class="game"
-onclick="openProduct(
-'Call of Duty Mobile',
-'CP',
+<div class="game" onclick="openProduct(
+'Call of Duty','CP',
 'images/f9f56c26780ac312b21e2d3a7da703f5.jpg',
 [
-['80 CP','400'],
-['420 CP','1,300'],
-['880 CP','2,300'],
-['2,400 CP','5,500'],
-['5,000 CP','11,000'],
-['10,800 CP','21,500']
-]
-)">
-
-<img
-src="images/f9f56c26780ac312b21e2d3a7da703f5.jpg"
-alt="Call of Duty">
-
-<div class="game-info">
+['80 CP',400],['420 CP',1300],['880 CP',2300],
+['2,400 CP',5500],['5,000 CP',11000],
+['10,800 CP',21500]
+])">
+<img src="images/f9f56c26780ac312b21e2d3a7da703f5.jpg">
+<div class="gameInfo">
 <small>CALL OF DUTY</small>
 <h3>CP</h3>
-<p>Tap to view packages →</p>
+<p>View packages →</p>
+</div>
 </div>
 
-</div>
-
-<!-- PUBG -->
-
-<div
-class="game"
-onclick="openProduct(
-'PUBG Mobile',
-'UC',
+<div class="game" onclick="openProduct(
+'PUBG Mobile','UC',
 'images/f31054399c0c2604548ba7dfdced2a62.jpg',
 [
-['60 UC','300'],
-['325 UC','1,300'],
-['660 UC','2,300'],
-['1,800 UC','5,500'],
-['3,850 UC','11,400'],
-['8,100 UC','21,500']
-]
-)">
-
-<img
-src="images/f31054399c0c2604548ba7dfdced2a62.jpg"
-alt="PUBG Mobile">
-
-<div class="game-info">
+['60 UC',300],['325 UC',1300],['660 UC',2300],
+['1,800 UC',5500],['3,850 UC',11400],
+['8,100 UC',21500]
+])">
+<img src="images/f31054399c0c2604548ba7dfdced2a62.jpg">
+<div class="gameInfo">
 <small>PUBG MOBILE</small>
 <h3>UC</h3>
-<p>Tap to view packages →</p>
+<p>View packages →</p>
+</div>
 </div>
 
 </div>
-
 </div>
-
-</div>
-
 </section>
 
-<!-- ================= COMING SOON ================= -->
-
+<!-- COMING SOON -->
 <section id="coming">
-
 <div class="wrap">
-
 <div class="tag">COMING SOON</div>
-
-<h2>More Is Coming.</h2>
-
+<h2>Coming Soon</h2>
 <p class="desc">
-DARK is growing. More digital gaming products
-and gift cards will be added.
+More games and digital services are coming to DARK.
 </p>
 
-<div class="coming">
+<div class="comingGrid">
 
-<div class="coming-card">
-<div class="tag">COMING SOON</div>
-<h3>Gift Cards</h3>
-<p>
-Apple, PlayStation, Xbox, Steam and more digital
-gift cards will be available through DARK.
-</p>
+<!-- Replace these four filenames with your actual pictures -->
+<div class="comingCard">
+<img src="images/apex.jpg" alt="Apex Legends">
+<div class="comingInfo">
+<span>COMING SOON</span>
+<h3>Apex Legends</h3>
+</div>
 </div>
 
-<div class="coming-card">
-<div class="tag">STAY READY</div>
-<h3>More Gaming Deals</h3>
-<p>
-Watch this space for new games, special offers
-and exclusive DARK deals.
-</p>
+<div class="comingCard">
+<img src="images/arena-breakout.jpg" alt="Arena Breakout">
+<div class="comingInfo">
+<span>COMING SOON</span>
+<h3>Arena Breakout</h3>
+</div>
+</div>
+
+<div class="comingCard">
+<img src="images/netflix.jpg" alt="Netflix">
+<div class="comingInfo">
+<span>COMING SOON</span>
+<h3>Netflix</h3>
+</div>
+</div>
+
+<div class="comingCard">
+<img src="images/prime-video.jpg" alt="Prime Video">
+<div class="comingInfo">
+<span>COMING SOON</span>
+<h3>Prime Video</h3>
+</div>
 </div>
 
 </div>
-
 </div>
-
 </section>
 
-<!-- ================= DEALS ================= -->
-
+<!-- DEALS -->
 <section id="deals">
-
 <div class="wrap">
-
 <div class="tag">DARK EXCLUSIVE</div>
-
 <h2>Deals & Drops</h2>
 
 <div class="deals">
-
 <div class="deal">
-
-<h3>Level Up Your Game.</h3>
-
+<h3>More For Gamers.</h3>
 <p>
-Choose your game, select your package and send
-your order directly to DARK through WhatsApp.
+Stay ready for new packages, special deals
+and upcoming digital products.
 </p>
-
-<a
-href="#gaming"
-class="btn primary">
-SHOP GAMING
-</a>
-
+<a href="#gaming" class="btn red">SHOP NOW →</a>
 </div>
 
 <div class="deal">
-
-<h3>Fast Ordering.</h3>
-
+<h3>Fast Orders.</h3>
 <p>
-Your order request includes your selected game,
-package, Gamer ID and payment transaction ID.
+Choose your package, enter your Gamer ID,
+payment information and send your order.
 </p>
-
 </div>
-
 </div>
-
 </div>
-
 </section>
 
-<!-- ================= FEATURES ================= -->
-
+<!-- FEATURES -->
 <section>
-
 <div class="wrap">
-
 <div class="tag">WHY DARK</div>
-
 <h2>Built For Gamers.</h2>
 
 <div class="features">
 
 <div class="feature">
-<div class="feature-icon">⚡</div>
+<div class="featureIcon">⚡</div>
 <h3>Easy Ordering</h3>
-<p>
-Choose your package and send your order
-without complicated checkout pages.
-</p>
+<p>Simple gaming top-up ordering.</p>
 </div>
 
 <div class="feature">
-<div class="feature-icon">🎮</div>
-<h3>Gaming Focused</h3>
-<p>
-DARK focuses on gaming top-ups and digital
-gaming products.
-</p>
+<div class="featureIcon">🎮</div>
+<h3>Gaming Focus</h3>
+<p>Gaming products and digital deals.</p>
 </div>
 
 <div class="feature">
-<div class="feature-icon">📱</div>
+<div class="featureIcon">📲</div>
 <h3>WhatsApp Orders</h3>
-<p>
-Orders are sent directly through WhatsApp
-for quick communication.
-</p>
+<p>Send your order directly to DARK.</p>
 </div>
 
 </div>
-
 </div>
-
 </section>
 
-<!-- ================= REWARD ================= -->
-
+<!-- REWARD -->
 <section id="reward">
-
 <div class="wrap">
-
 <div class="reward">
-
 <div class="tag">DARK REWARDS</div>
-
 <h2>5 Purchases = FREE</h2>
-
-<p>
-Complete five purchases with DARK and choose
-one of the available gaming rewards.
+<p class="desc" style="margin-left:auto;margin-right:auto">
+Complete five purchases to qualify for a free reward.
 </p>
 
-<div class="progress-wrap">
-
-<div class="progress-top">
-
-<span>Purchase Progress</span>
-
-<strong>
-<span id="purchaseCount">0</span>/5
-</strong>
-
+<div class="progressWrap">
+<div class="progressTop">
+<span>Purchases</span>
+<strong><span id="purchaseCount">0</span>/5</strong>
 </div>
-
 <div class="progress">
-
-<div
-class="progress-bar"
-id="progressBar">
+<div class="progressBar" id="progressBar"></div>
 </div>
-
 </div>
-
 </div>
-
-<button
-class="btn primary"
-onclick="openReward()">
-VIEW MY REWARD
-</button>
-
 </div>
-
-</div>
-
 </section>
 
-<!-- ================= PAYMENT ================= -->
-
-<section id="payment">
-
+<!-- PAYMENT -->
+<section>
 <div class="wrap">
-
 <div class="tag">PAYMENT</div>
-
 <h2>Payment Information</h2>
-
-<p class="desc">
-After making payment, enter your transaction ID
-inside the order form.
-</p>
 
 <div class="payment">
 
-<div class="payment-card">
-
+<div class="paymentCard">
 <h3>MMG</h3>
-
-<div class="payment-row">
+<div class="paymentRow">
 <span>Number</span>
 <strong>762-6433</strong>
 </div>
-
-<div class="payment-row">
+<div class="paymentRow">
 <span>Merchant</span>
 <strong>CASSIA HENRY</strong>
 </div>
-
 </div>
 
-<div class="payment-card">
-
-<h3>Order Steps</h3>
-
-<div class="payment-row">
-<span>01</span>
-<strong>Choose game</strong>
-</div>
-
-<div class="payment-row">
-<span>02</span>
+<div class="paymentCard">
+<h3>Before Ordering</h3>
+<div class="paymentRow">
+<span>1</span>
 <strong>Choose package</strong>
 </div>
-
-<div class="payment-row">
-<span>03</span>
-<strong>Enter Gamer ID</strong>
+<div class="paymentRow">
+<span>2</span>
+<strong>Make payment</strong>
+</div>
+<div class="paymentRow">
+<span>3</span>
+<strong>Save transaction ID</strong>
+</div>
+<div class="paymentRow">
+<span>4</span>
+<strong>Enter it in the order form</strong>
+</div>
 </div>
 
-<div class="payment-row">
-<span>04</span>
-<strong>Enter MMG Transaction ID</strong>
 </div>
-
 </div>
-
-</div>
-
-</div>
-
 </section>
 
-<!-- ================= CONTACT ================= -->
-
+<!-- CONTACT -->
 <section id="contact">
-
 <div class="wrap">
-
 <div class="contact">
-
 <div class="tag">CONTACT DARK</div>
-
 <h2>Ready To Level Up?</h2>
-
-<p>
-Place your gaming order directly through WhatsApp.
-</p>
+<p>Place your gaming order through WhatsApp.</p>
 
 <div class="actions">
-
-<a
-class="btn primary"
+<a class="btn red"
 href="https://wa.me/13436555995"
 target="_blank">
 WHATSAPP 1
 </a>
-
-<a
-class="btn secondary"
+<a class="btn darkBtn"
 href="https://wa.me/5927002769"
 target="_blank">
 WHATSAPP 2
 </a>
-
 </div>
-
 </div>
-
 </div>
-
 </section>
 
-<!-- ================= FOOTER ================= -->
-
 <footer>
-
 <div class="footer">
-
 <strong>DARK</strong>
-
 <span>Digital Gaming Store • Guyana</span>
-
 <span>© 2026 DARK</span>
-
 </div>
-
 </footer>
 
-<!-- ================= PRODUCT MODAL ================= -->
-
-<div
-class="modal-bg"
-id="productModal">
-
+<!-- PRODUCT MODAL -->
+<div class="modalBg" id="productModal">
 <div class="modal">
+<div class="modalGrid">
 
-<div class="modal-grid">
-
-<div class="modal-image">
-
-<img
-id="productImage"
-src=""
-alt="Product">
-
+<div class="modalImage">
+<img id="productImage" src="">
 </div>
 
-<div class="modal-content">
+<div class="modalContent">
 
-<button
-class="close"
-onclick="closeProduct()">
-×
-</button>
+<button class="close" onclick="closeProduct()">×</button>
 
 <div class="tag">DARK GAMING</div>
-
-<h2 id="productName">
-Game
-</h2>
-
-<p
-class="modal-type"
-id="productType">
-Choose your package.
-</p>
+<h2 id="productName"></h2>
+<p id="productType" class="desc"></p>
 
 <div id="packages"></div>
 
-<label class="form-label">
-Gamer ID / Username
-</label>
+<!-- QUANTITY -->
+<div class="quantity">
+<strong>Number of purchases</strong>
+<div class="quantityControls">
+<button onclick="changeQuantity(-1)">−</button>
+<span id="quantityValue">1</span>
+<button onclick="changeQuantity(1)">+</button>
+</div>
+</div>
 
+<div class="paymentRow">
+<span>Total</span>
+<strong id="totalPrice">GYD $0</strong>
+</div>
+
+<label class="label">Gamer ID / Username</label>
 <input
 class="field"
 id="gamerId"
 placeholder="Enter Gamer ID or Username">
 
-<label class="form-label">
-MMG Transaction ID
-</label>
-
+<label class="label">MMG Transaction ID</label>
 <input
 class="field"
 id="transactionId"
-placeholder="Enter your MMG transaction ID">
+placeholder="Enter MMG Transaction ID">
 
 <button
-class="btn primary"
-style="width:100%;margin-top:10px"
+class="btn red"
+style="width:100%;margin-top:12px"
 onclick="placeOrder()">
-SEND ORDER TO DARK →
+PLACE ORDER →
 </button>
 
 </div>
-
+</div>
+</div>
 </div>
 
-</div>
-
-</div>
-
-<!-- ================= REWARD MODAL ================= -->
-
-<div
-class="modal-bg"
-id="rewardModal">
-
+<!-- THANK YOU MODAL -->
+<div class="modalBg" id="thankModal">
 <div class="modal">
+<div class="thankyou">
 
-<div class="reward-modal">
+<div class="check">✓</div>
 
-<button
-class="close"
-onclick="closeReward()">
-×
-</button>
+<div class="tag">DARK ORDER</div>
 
-<div class="tag">DARK REWARDS</div>
+<h2>Thank You!</h2>
 
-<h2>Choose Your Free Reward</h2>
-
-<p class="desc" style="margin:15px auto">
-Your reward options will be available after
-five completed purchases.
+<p class="desc" style="margin-left:auto;margin-right:auto">
+Thank you for choosing DARK. Your order request
+has been prepared for WhatsApp.
 </p>
 
-<div class="reward-options">
+<div class="orderSummary">
+<div>
+<span>Game</span>
+<strong id="thanksGame"></strong>
+</div>
+<div>
+<span>Package</span>
+<strong id="thanksPackage"></strong>
+</div>
+<div>
+<span>Quantity</span>
+<strong id="thanksQuantity"></strong>
+</div>
+<div>
+<span>Total</span>
+<strong id="thanksTotal"></strong>
+</div>
+<div>
+<span>Gamer ID</span>
+<strong id="thanksId"></strong>
+</div>
+</div>
 
 <button
-class="reward-option"
-onclick="chooseReward('325 UC PUBG Mobile')">
-325 UC — PUBG
+class="btn red"
+onclick="sendWhatsApp()">
+SEND ORDER TO WHATSAPP →
 </button>
+
+<br><br>
 
 <button
-class="reward-option"
-onclick="chooseReward('500 Robux')">
-500 Robux
-</button>
-
-<button
-class="reward-option"
-onclick="chooseReward('420 CP Call of Duty')">
-420 CP — Call of Duty
-</button>
-
-<button
-class="reward-option"
-onclick="chooseReward('210 Diamonds Free Fire')">
-210 Diamonds — Free Fire
+class="btn darkBtn"
+onclick="closeThankYou()">
+CLOSE
 </button>
 
 </div>
-
-<div
-class="reward-message"
-id="rewardMessage">
 </div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ================= TOAST ================= -->
-
-<div
-class="toast"
-id="toast">
-Order ready.
 </div>
 
 <script>
 
-/* ================= MOBILE MENU ================= */
+/* ===== ENTER STORE ===== */
+function enterStore(){
+document.getElementById("enterScreen").classList.add("hide");
+}
 
+/* ===== MENU ===== */
 function toggleMenu(){
-
-  document
-    .getElementById("nav")
-    .classList.toggle("open");
-
+document.getElementById("nav").classList.toggle("open");
 }
 
-/* ================= PRODUCT SYSTEM ================= */
+/* ===== PRODUCT ===== */
+let gameName="";
+let packageName="";
+let packagePrice=0;
+let quantity=1;
+let finalMessage="";
 
-let selectedGame = "";
-let selectedPackage = "";
-let selectedPrice = "";
+function openProduct(name,type,image,packages){
 
-function openProduct(
-  name,
-  type,
-  image,
-  packages
-){
+gameName=name;
+packageName="";
+packagePrice=0;
+quantity=1;
 
-  selectedGame = name;
-  selectedPackage = "";
-  selectedPrice = "";
+document.getElementById("productName").textContent=name;
+document.getElementById("productType").textContent=
+"Choose your "+type+" package.";
+document.getElementById("productImage").src=image;
+document.getElementById("quantityValue").textContent=1;
+document.getElementById("totalPrice").textContent="GYD $0";
 
-  document
-    .getElementById("productName")
-    .textContent = name;
+const box=document.getElementById("packages");
+box.innerHTML="";
 
-  document
-    .getElementById("productType")
-    .textContent =
-      "Choose your " + type + " package.";
+packages.forEach(function(item){
 
-  document
-    .getElementById("productImage")
-    .src = image;
+const btn=document.createElement("button");
+btn.className="package";
 
-  const box =
-    document.getElementById("packages");
+btn.innerHTML=
+"<span>"+item[0]+"</span><strong>GYD $"+
+Number(item[1]).toLocaleString()+"</strong>";
 
-  box.innerHTML = "";
+btn.onclick=function(){
 
-  packages.forEach(function(pkg){
+document.querySelectorAll(".package")
+.forEach(x=>x.classList.remove("selected"));
 
-    const button =
-      document.createElement("button");
+btn.classList.add("selected");
 
-    button.className = "package";
+packageName=item[0];
+packagePrice=Number(item[1]);
 
-    button.innerHTML =
-      "<span>" + pkg[0] + "</span>" +
-      "<strong>GYD $" + pkg[1] + "</strong>";
+updateTotal();
 
-    button.onclick = function(){
+};
 
-      document
-        .querySelectorAll(".package")
-        .forEach(function(item){
-          item.classList.remove("selected");
-        });
+box.appendChild(btn);
 
-      button.classList.add("selected");
+});
 
-      selectedPackage = pkg[0];
-      selectedPrice = pkg[1];
+document.getElementById("productModal")
+.classList.add("open");
 
-    };
-
-    box.appendChild(button);
-
-  });
-
-  document
-    .getElementById("productModal")
-    .classList.add("open");
-
-  document.body.style.overflow = "hidden";
-
+document.body.style.overflow="hidden";
 }
 
-/* ================= CLOSE PRODUCT ================= */
+function changeQuantity(amount){
+
+if(!packagePrice)return;
+
+quantity+=amount;
+
+if(quantity<1)quantity=1;
+if(quantity>20)quantity=20;
+
+document.getElementById("quantityValue").textContent=quantity;
+
+updateTotal();
+}
+
+function updateTotal(){
+
+let total=packagePrice*quantity;
+
+document.getElementById("totalPrice").textContent=
+"GYD $"+total.toLocaleString();
+}
 
 function closeProduct(){
 
-  document
-    .getElementById("productModal")
-    .classList.remove("open");
+document.getElementById("productModal")
+.classList.remove("open");
 
-  document.body.style.overflow = "";
-
+document.body.style.overflow="";
 }
 
-/* ================= ORDER ================= */
-
+/* ===== ORDER ===== */
 function placeOrder(){
 
-  const gamer =
-    document.getElementById("gamerId")
-      .value.trim();
+const id=document.getElementById("gamerId").value.trim();
+const transaction=document.getElementById("transactionId").value.trim();
 
-  const transaction =
-    document.getElementById("transactionId")
-      .value.trim();
-
-  if(!selectedPackage){
-
-    showToast(
-      "Please choose a package first."
-    );
-
-    return;
-  }
-
-  if(!gamer){
-
-    showToast(
-      "Please enter your Gamer ID or Username."
-    );
-
-    return;
-  }
-
-  if(!transaction){
-
-    showToast(
-      "Please enter your MMG Transaction ID."
-    );
-
-    return;
-  }
-
-  const message =
-`Hi DARK! I want to place an order.
-
-Game: ${selectedGame}
-Package: ${selectedPackage}
-Price: GYD $${selectedPrice}
-Gamer ID / Username: ${gamer}
-MMG Transaction ID: ${transaction}`;
-
-  /*
-    This records the order locally.
-    Actual purchase verification should
-    still be done by DARK before awarding
-    a free reward.
-  */
-
-  let purchases =
-    Number(
-      localStorage.getItem("darkPurchases") || 0
-    );
-
-  purchases++;
-
-  if(purchases > 5){
-    purchases = 5;
-  }
-
-  localStorage.setItem(
-    "darkPurchases",
-    purchases
-  );
-
-  updateReward();
-
-  closeProduct();
-
-  window.open(
-    "https://wa.me/13436555995?text=" +
-    encodeURIComponent(message),
-    "_blank"
-  );
-
-  showToast(
-    "Order sent to DARK!"
-  );
-
+if(!packageName){
+alert("Please choose a package.");
+return;
 }
 
-/* ================= REWARD ================= */
-
-function updateReward(){
-
-  const count =
-    Number(
-      localStorage.getItem("darkPurchases") || 0
-    );
-
-  document
-    .getElementById("purchaseCount")
-    .textContent = count;
-
-  document
-    .getElementById("progressBar")
-    .style.width =
-      ((count / 5) * 100) + "%";
-
+if(!id){
+alert("Please enter the Gamer ID or Username.");
+return;
 }
 
-function openReward(){
-
-  const count =
-    Number(
-      localStorage.getItem("darkPurchases") || 0
-    );
-
-  document
-    .getElementById("rewardModal")
-    .classList.add("open");
-
-  if(count < 5){
-
-    document
-      .getElementById("rewardMessage")
-      .style.display = "block";
-
-    document
-      .getElementById("rewardMessage")
-      .textContent =
-      "You have " +
-      count +
-      "/5 purchases. Complete five purchases to unlock a free reward.";
-
-  }else{
-
-    document
-      .getElementById("rewardMessage")
-      .style.display = "block";
-
-    document
-      .getElementById("rewardMessage")
-      .textContent =
-      "🎉 Congratulations! Choose your reward above.";
-
-  }
-
+if(!transaction){
+alert("Please enter the MMG Transaction ID.");
+return;
 }
 
-function closeReward(){
+const total=packagePrice*quantity;
 
-  document
-    .getElementById("rewardModal")
-    .classList.remove("open");
+finalMessage=
+"Hi DARK! I want to place an order.%0A%0A"+
+"Game: "+gameName+"%0A"+
+"Package: "+packageName+"%0A"+
+"Number of purchases: "+quantity+"%0A"+
+"Total: GYD $"+total.toLocaleString()+"%0A"+
+"Gamer ID / Username: "+id+"%0A"+
+"MMG Transaction ID: "+transaction;
 
-}
+document.getElementById("thanksGame").textContent=gameName;
+document.getElementById("thanksPackage").textContent=packageName;
+document.getElementById("thanksQuantity").textContent=quantity;
+document.getElementById("thanksTotal").textContent=
+"GYD $"+total.toLocaleString();
+document.getElementById("thanksId").textContent=id;
 
-function chooseReward(reward){
+closeProduct();
 
-  const count =
-    Number(
-      localStorage.getItem("darkPurchases") || 0
-    );
+document.getElementById("thankModal")
+.classList.add("open");
 
-  if(count < 5){
+let purchases=
+Number(localStorage.getItem("darkPurchases")||0);
 
-    showToast(
-      "Complete 5 purchases first."
-    );
+purchases+=quantity;
 
-    return;
-  }
+if(purchases>5)purchases=5;
 
-  document
-    .getElementById("rewardMessage")
-    .style.display = "block";
-
-  document
-    .getElementById("rewardMessage")
-    .textContent =
-      "🎉 You selected: " +
-      reward +
-      ". Please contact DARK to confirm your reward.";
-
-}
-
-/* ================= TOAST ================= */
-
-function showToast(message){
-
-  const toast =
-    document.getElementById("toast");
-
-  toast.textContent = message;
-
-  toast.classList.add("show");
-
-  setTimeout(function(){
-
-    toast.classList.remove("show");
-
-  },3000);
-
-}
-
-/* ================= PARTICLES ================= */
-
-const canvas =
-  document.getElementById("particles");
-
-const ctx =
-  canvas.getContext("2d");
-
-let particles = [];
-
-let mouse = {
-  x:null,
-  y:null
-};
-
-function resizeCanvas(){
-
-  canvas.width =
-    window.innerWidth;
-
-  canvas.height =
-    window.innerHeight;
-
-}
-
-window.addEventListener(
-  "resize",
-  resizeCanvas
-);
-
-resizeCanvas();
-
-function createParticles(){
-
-  particles = [];
-
-  const amount =
-    window.innerWidth < 700
-      ? 35
-      : 70;
-
-  for(let i=0;i<amount;i++){
-
-    particles.push({
-
-      x:Math.random()*canvas.width,
-
-      y:Math.random()*canvas.height,
-
-      size:
-        Math.random()*2.5 + .5,
-
-      speedX:
-        (Math.random()-.5)*.35,
-
-      speedY:
-        (Math.random()-.5)*.35,
-
-      alpha:
-        Math.random()*.65+.15
-
-    });
-
-  }
-
-}
-
-createParticles();
-
-window.addEventListener(
-  "mousemove",
-  function(e){
-
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-
-  }
-);
-
-function animateParticles(){
-
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
-
-  particles.forEach(function(p){
-
-    p.x += p.speedX;
-    p.y += p.speedY;
-
-    if(p.x < 0)
-      p.x = canvas.width;
-
-    if(p.x > canvas.width)
-      p.x = 0;
-
-    if(p.y < 0)
-      p.y = canvas.height;
-
-    if(p.y > canvas.height)
-      p.y = 0;
-
-    if(mouse.x !== null){
-
-      const dx =
-        p.x - mouse.x;
-
-      const dy =
-        p.y - mouse.y;
-
-      const distance =
-        Math.sqrt(dx*dx + dy*dy);
-
-      if(distance < 120){
-
-        p.x +=
-          dx / distance * .8;
-
-        p.y +=
-          dy / distance * .8;
-
-      }
-
-    }
-
-    ctx.beginPath();
-
-    ctx.arc(
-      p.x,
-      p.y,
-      p.size,
-      0,
-      Math.PI*2
-    );
-
-    ctx.fillStyle =
-      "rgba(0,180,255," +
-      p.alpha +
-      ")";
-
-    ctx.fill();
-
-  });
-
-  requestAnimationFrame(
-    animateParticles
-  );
-
-}
-
-animateParticles();
-
-/* ================= MODAL CLICK OUTSIDE ================= */
-
-document
-  .getElementById("productModal")
-  .addEventListener(
-    "click",
-    function(e){
-
-      if(e.target === this){
-
-        closeProduct();
-
-      }
-
-    }
-  );
-
-document
-  .getElementById("rewardModal")
-  .addEventListener(
-    "click",
-    function(e){
-
-      if(e.target === this){
-
-        closeReward();
-
-      }
-
-    }
-  );
-
-/* ================= START ================= */
+localStorage.setItem("darkPurchases",purchases);
 
 updateReward();
+}
+
+function sendWhatsApp(){
+
+window.open(
+"https://wa.me/13436555995?text="+finalMessage,
+"_blank"
+);
+}
+
+function closeThankYou(){
+
+document.getElementById("thankModal")
+.classList.remove("open");
+
+document.body.style.overflow="";
+}
+
+/* ===== REWARD ===== */
+function updateReward(){
+
+let count=
+Number(localStorage.getItem("darkPurchases")||0);
+
+document.getElementById("purchaseCount")
+.textContent=count;
+
+document.getElementById("progressBar")
+.style.width=(count/5*100)+"%";
+}
+
+updateReward();
+
+/* ===== PARTICLES ===== */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+let particles=[];
+
+function resize(){
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+}
+resize();
+
+window.addEventListener("resize",resize);
+
+for(let i=0;i<(innerWidth<700?35:75);i++){
+
+particles.push({
+x:Math.random()*innerWidth,
+y:Math.random()*innerHeight,
+r:Math.random()*2+0.5,
+sx:(Math.random()-.5)*.3,
+sy:(Math.random()-.5)*.3,
+a:Math.random()*.6+.1
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+
+p.x+=p.sx;
+p.y+=p.sy;
+
+if(p.x<0)p.x=canvas.width;
+if(p.x>canvas.width)p.x=0;
+if(p.y<0)p.y=canvas.height;
+if(p.y>canvas.height)p.y=0;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="rgba(255,30,30,"+p.a+")";
+ctx.fill();
+
+});
+
+requestAnimationFrame(animate);
+}
+
+animate();
 
 </script>
 
 </body>
 </html>
+
+
